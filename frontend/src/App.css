@@ -46,8 +46,8 @@ body {
   font-weight: 400;
   font-family: sans-serif;
   background: #18ad5b;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #82f89b, #54cf96, #1f6831);  
-  background: linear-gradient(to right, #82f89b, #54cf96, #1f6831); 
+  background: -webkit-linear-gradient(to right, #f3f7bf, #f5f781, #fdeb43);  
+  background: linear-gradient(to right, #b4fca2, #67d367, #37b059); 
   
 }
 
