@@ -1,0 +1,46 @@
+import './App.css';
+import React from 'react';
+import {BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+//import * as Mui from '@material-ui/core';
+// import Home from "./Home";
+// import View from "./View";
+import Login from "./Components/login.component";
+import SignUp from "./Components/signup.component";
+import Disclaimer from "./Components/disclamer.component";
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+ 
+function App() {
+  return ( <Router>
+    <div className="App">
+      <nav className="navbar navbar-expand-lg navbar-light fixed-top">
+        <div className="container">
+          <img src="worksafelogo.png" class="logo" />
+          {/* <Link className="navbar-brand" to={"/sign-in"}>RemoteStack</Link> */}
+          <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul className="navbar-nav ml-auto">
+              <li className="nav-item">
+                <Link className="nav-link" to={"/sign-in"}>Sign in</Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to={"/sign-up"}>Sign up</Link>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <div className="outer">
+        <div className="inner">
+          <Switch>
+            <Route exact path='/' component={Login} />
+            <Route path="/sign-in" component={Login} />
+            <Route path="/sign-up" component={SignUp} />
+            <Route path="/disclamer" component={Disclaimer} />
+          </Switch>
+        </div>
+      </div>
+    </div></Router>
+  );
+}
+ 
+export default App;
