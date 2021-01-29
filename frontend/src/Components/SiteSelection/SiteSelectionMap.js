@@ -1,24 +1,26 @@
 import React, { Component } from "react";
 import { Map, GoogleApiWrapper } from 'google-maps-react';
 
-const mapStyles = {
-  width: '100%',
-  height: '100%'
-};
+    
+ const style = {
+    maxWidth: "600px",
+    height: "600px",
+    overflowX: "hidden",
+    overflowY: "hidden"
+   };
+   const containerStyle = {
+    maxWidth: "600px",
+    height: "600px"
+   };
 
-class SiteSelectionMap extends Component {
-    continue = e => {
-        e.preventDefault();
-        this.props.nextStep();
-    }
-
+   export class SiteSelectionMap extends Component {
     render() {
         return (
             <div>
             <Map
         google={this.props.google}
-        zoom={14}
-        style={mapStyles}
+        style={style}
+        containerStyle={containerStyle}
         initialCenter={
           {
             lat: -1.2884,
@@ -32,6 +34,5 @@ class SiteSelectionMap extends Component {
 }
 }
 export default GoogleApiWrapper({
-    apiKey: <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCaQDZFxQVzqRsfVUsQiE6kX-v2eQMAqNEcallback=initMap"
-    type="text/javascript"></script>
+    apiKey: 'AIzaSyCaQDZFxQVzqRsfVUsQiE6kX-v2eQMAqNE'
   })(SiteSelectionMap);

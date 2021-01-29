@@ -27,7 +27,7 @@ export default function CenteredGrid() {
           <div className={classes.paper}><SiteSelectionForm/></div>
         </Grid>
         <Grid item xs={6}>
-          <Paper className={classes.paper}><SiteSelectionMap/></Paper>
+          <div className={classes.paper}><SiteSelectionMap/></div>
         </Grid>
       </Grid>
       </div>
