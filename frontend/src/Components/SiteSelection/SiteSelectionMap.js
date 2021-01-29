@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Map, GoogleApiWrapper } from 'google-maps-react';
-
+/* global google */
     
  const style = {
     maxWidth: "600px",
@@ -14,6 +14,7 @@ import { Map, GoogleApiWrapper } from 'google-maps-react';
    };
 
    export class SiteSelectionMap extends Component {
+       
     render() {
         return (
             <div>
@@ -23,8 +24,8 @@ import { Map, GoogleApiWrapper } from 'google-maps-react';
         containerStyle={containerStyle}
         initialCenter={
           {
-            lat: -1.2884,
-            lng: 36.8233
+            lat: 41,
+            lng: 174
           }
         }
       />
@@ -34,5 +35,5 @@ import { Map, GoogleApiWrapper } from 'google-maps-react';
 }
 }
 export default GoogleApiWrapper({
-    apiKey: 'AIzaSyCaQDZFxQVzqRsfVUsQiE6kX-v2eQMAqNE'
+    apiKey: 'AIzaSyBojPgUo6oL-v-WuwF62T2AGR-KrxVQgvE'
   })(SiteSelectionMap);
