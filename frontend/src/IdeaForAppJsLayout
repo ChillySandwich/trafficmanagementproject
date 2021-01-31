@@ -1,0 +1,21 @@
+import React from 'react';
+import './App.css';
+import SiteSelection from './SiteSelection/SiteSelection';
+
+
+function App () {
+// Create switch cases for the component that gets inserted into the second row, depending on hw far through the guide they are
+  return (
+    <div className="container-fluid">
+      <div className="row">
+        <div className="col s12">Menu</div>
+      </div>
+    <div className="row">
+      <div className="col s12"><SiteSelection/></div> 
+    </div>
+    </div>
+    );
+  }
+
+
+export default App;
