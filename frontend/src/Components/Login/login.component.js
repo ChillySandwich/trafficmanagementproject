@@ -1,7 +1,18 @@
+import { StylesProvider } from "@material-ui/core";
 import React, { Component } from "react";
+import ReactDOM from 'react-dom';
 import {Link } from 'react-router-dom';
+import SiteSelection from '../SiteSelection/SiteSelection';
+import { Button } from 'react-bootstrap';
 export default class Login extends Component {
+
+    //make a 'continue' action handler, where the state prop is altered through the nextStep method in the 'MultiStepHandler' component. call this 'continue' handler on the submit button on page.
+    continue = e => {
+        e.preventDefault();
+        this.props.nextStep();
+    }
     render() {
+        const { values, handleChange } = this.props;
         return (
             <form>
 
@@ -24,8 +35,7 @@ export default class Login extends Component {
                 </div>
             </div>
 
-           
-        <Link to = "/Disclamer"> <button type="submit" className="btn btn-dark btn-lg btn-block">Sign in</button> </Link>  
+            <input type='button' value="Submit" onClick={this.continue} />
             
             <p className="forgot-password text-right"> 
            
@@ -36,4 +46,4 @@ export default class Login extends Component {
         
         );
     }
-}
+} 

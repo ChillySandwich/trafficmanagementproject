@@ -7,7 +7,6 @@ export class SiteSelectionForm extends Component {
     super(props);
     this.autocompleteInput = React.createRef();
     this.autocomplete = null;
-    this.handlePlaceChanged = this.handlePlaceChanged.bind(this);
   }
 
   componentDidMount() {
@@ -15,11 +14,6 @@ export class SiteSelectionForm extends Component {
         {"types": ["geocode"]});
 
     this.autocomplete.addListener('place_changed', this.handlePlaceChanged);
-  }
-
-  handlePlaceChanged(){
-    const place = this.autocomplete.getPlace();
-    this.props.onPlaceLoaded(place);
   }
 
  
@@ -31,25 +25,24 @@ export class SiteSelectionForm extends Component {
 
             <div className="form-group">
                 <label>Enter Industry</label>
-                <input type="email" className="form-control" placeholder="Enter Industry" />
+                <input type="text" className="form-control" placeholder="Enter Industry" />
             </div>
 
             <div className="form-group">
-            <input ref={this.autocompleteInput}  id="autocomplete" placeholder="Enter your address"
+              <label>Enter Site Address</label>
+            <input ref={this.autocompleteInput}  id="autocomplete" placeholder="Enter your Address"
          type="text"></input>
             </div>
 
             <div className="form-group">
                 <label>Enter Square Meters</label>
-                <input type="email" className="form-control" placeholder="Enter Sqm" />
+                <input type="text" className="form-control" placeholder="Enter Sqm" />
             </div>
 
             <div className="form-group">
                 <label>Enter Warehouse</label>
-                <input type="email" className="form-control" placeholder="Enter password" />
+                <input type="text" className="form-control" placeholder="Enter Warehouse" />
             </div>
-
-            <button type="submit" className="btn btn-dark btn-lg btn-block"> Submit </button>
 
             </form>
           

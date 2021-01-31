@@ -1,0 +1,39 @@
+//const React = require('react')
+import React, { Component } from "react";
+export class Upload extends Component{
+ //'Continue' event handler, calls the nextStep method from MultiStepHandler to go forward a page
+ continue = e => {
+    e.preventDefault();
+    this.props.nextStep();
+}
+//'back' event handler, calls the prevStep method from MultiStepHandler to go back a page
+  back = e => {
+    e.preventDefault();
+    this.props.prevStep();
+  }
+
+  constructor(props){
+    super(props)
+    this.state = {
+      file: null
+    }
+    this.handleChange = this.handleChange.bind(this)
+  }
+  handleChange(event) {
+    this.setState({
+      file: URL.createObjectURL(event.target.files[0])
+    })
+  }
+  render() {
+    const { values, handleChange } = this.props;
+    return (
+      <div>
+        <input type="file" onChange={this.handleChange}/>
+        <img src={this.state.file}/>
+        <input type='button' value="submit" onClick={this.continue}/> 
+        <input type='button' value="previous page" onClick={this.back}/>
+      </div>
+    );
+  }
+}
+export default Upload
