@@ -9,6 +9,8 @@ import HazardPage from './HazardSelect/HazardPage';
 
 export class MultiStepHandler extends Component {
     // Put some empty fields in here to hold data when it needs to be changed e.g. industry: ''. will need to do this for anything we want in the final 'pdf' 
+    
+    
     state = {
         step: 1,
         industry: '',
@@ -17,6 +19,11 @@ export class MultiStepHandler extends Component {
         warehouse: '',
 
     }
+
+    showHaz = (hazardList) => {
+        console.log(hazardList)
+    }
+
     //put step value forward once, for submit buttons
     nextStep = () => {
         const {step } = this.state;
@@ -91,6 +98,7 @@ export class MultiStepHandler extends Component {
                         prevStep = {this.prevStep}
                         handleChange= {this.handleChange}
                         values = {values}
+                        showHaz = {this.showHaz}
                         />
                     )
            

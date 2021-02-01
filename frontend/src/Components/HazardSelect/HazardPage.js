@@ -94,7 +94,7 @@ function HazardPage(props) {
 
     <input type='button' value="submit" onClick={continuee}/> 
     <input type='button' value="previous page" onClick={back}/>
-      
+    <input type='button' value="Selected Hazards" onClick={() => props.showHaz(selHaz)}/>
     </div>
   );
 }
