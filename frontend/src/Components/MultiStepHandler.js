@@ -4,11 +4,8 @@ import Login from './Login/login.component';
 import SiteSelection from './SiteSelection/SiteSelection';
 import  SiteUpload  from './SiteMapUpload/upload.component';
 import Disclaimer from './Disclaimer/disclaimer.component';
-<<<<<<< HEAD
 import Layout from './HazardAllocation/Layout';
-=======
 import HazardPage from './HazardSelect/HazardPage';
->>>>>>> 87179c27d4da8906c4bb7746659ae3260bf24513
 
 
 export class MultiStepHandler extends Component {
@@ -104,6 +101,7 @@ export class MultiStepHandler extends Component {
                         values = {values}
                         showHaz = {this.showHaz}
                         />
+                        
                     )
            
            }       
