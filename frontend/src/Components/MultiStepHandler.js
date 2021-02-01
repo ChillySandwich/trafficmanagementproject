@@ -17,11 +17,13 @@ export class MultiStepHandler extends Component {
         siteaddress: '',
         sqmSiteSize: '',
         warehouse: '',
-        
+
     }
 
+    //these are the user selected hazards
     showHaz = (hazardList) => {
         console.log(hazardList)
+        return (hazardList)
     }
 
     //put step value forward once, for submit buttons
@@ -99,6 +101,17 @@ export class MultiStepHandler extends Component {
                         handleChange= {this.handleChange}
                         values = {values}
                         showHaz = {this.showHaz}
+                        />
+                    )
+                    case 6:
+                    return (
+                        <HazardPage
+                        nextStep = {this.nextStep}
+                        prevStep = {this.prevStep}
+                        handleChange= {this.handleChange}
+                        values = {values}
+                        showHaz = {this.showHaz}
+                        selectedhazards = {this.showHaz}
                         />
                     )
            

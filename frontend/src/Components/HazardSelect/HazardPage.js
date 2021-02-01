@@ -18,22 +18,41 @@ function HazardPage(props) {
             name: "Forklift",
             description: "Heavy vehicle, not to be trifled with",
             selected: false,
-            img: "https://www.xilin.com/wp-content/uploads/2013/08/FB20R.jpg"
+            img: "https://www.xilin.com/wp-content/uploads/2013/08/FB20R.jpg",
+            image: <img style={{height: '40px', width: '40px'}}img src="https://tinyurl.com/y3aef9kt" alt=""> </img>
         },
         {
             id: 2,
             name: "Racking",
+            text: "Racking",
             description: "Heavy storage, may collapse if hit",
             selected: false,
-            img: "https://novalok.co.nz/wp-content/uploads/protection-On-site-racking-2.jpg"
+            img: "https://novalok.co.nz/wp-content/uploads/protection-On-site-racking-2.jpg",
+            image: <img style={{height: '40px', width: '60px'}}img src="https://tinyurl.com/y67vdnmu" alt=""></img>
         },
         {
             id: 3,
             name: "Truck",
+            text: "Truck",
             description: "Even heavier vehicle, not to be trifled with",
             selected: false,
-            img: "https://www.hireace.co.nz/site/hireacerental/images/Vehicles/Commercial/Tail-Lift-Furniture-truck-hire.jpg"
+            img: "https://www.hireace.co.nz/site/hireacerental/images/Vehicles/Commercial/Tail-Lift-Furniture-truck-hire.jpg",
+            image: <img style={{height: '40px', width: '50px'}} img src="https://tinyurl.com/y3rxt7hh" alt=""></img>
         }
+        //,
+        // {
+        //     id:4,
+        //     text: 'Traffic Cone',
+        //     name: 'Traffic Cone',
+        //     image: <img style={{height: '20px', width: '20px'}}src="https://tinyurl.com/y6a5xw69" alt=""></img>,
+        // },
+        // {
+        //     id:5,
+        //     text: 'Pedestrian Zone',
+        //     name: 'Pedestrian Zone',
+        //     image: <img style={{height: '40px', width: '40px'}} img src= 'https://tinyurl.com/y27hc3ut' alt=""></img>
+            
+        // }
     ])
 
     const [selHaz, setSelHaz] = useState([]) 
