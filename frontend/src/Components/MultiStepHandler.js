@@ -4,19 +4,30 @@ import Login from './Login/login.component';
 import SiteSelection from './SiteSelection/SiteSelection';
 import  SiteUpload  from './SiteMapUpload/upload.component';
 import Disclaimer from './Disclaimer/disclaimer.component';
+<<<<<<< HEAD
 import Layout from './HazardAllocation/Layout';
+=======
+import HazardPage from './HazardSelect/HazardPage';
+>>>>>>> 87179c27d4da8906c4bb7746659ae3260bf24513
 
 
 export class MultiStepHandler extends Component {
     // Put some empty fields in here to hold data when it needs to be changed e.g. industry: ''. will need to do this for anything we want in the final 'pdf' 
+    
+    
     state = {
         step: 1,
         industry: '',
         siteaddress: '',
         sqmSiteSize: '',
         warehouse: '',
-
+        
     }
+
+    showHaz = (hazardList) => {
+        console.log(hazardList)
+    }
+
     //put step value forward once, for submit buttons
     nextStep = () => {
         const {step } = this.state;
@@ -85,14 +96,15 @@ export class MultiStepHandler extends Component {
                         )
                         //Continue making cases for as many pages as we need.
                     case 5:
-                        return (
-                            <Layout
-                            nextStep = {this.nextStep}
-                            prevStep = {this.prevStep}
-                            handleChange={this.handleChange}
-                            values = {values}
-                            />
-                        )
+                    return (
+                        <HazardPage
+                        nextStep = {this.nextStep}
+                        prevStep = {this.prevStep}
+                        handleChange= {this.handleChange}
+                        values = {values}
+                        showHaz = {this.showHaz}
+                        />
+                    )
            
            }       
            
