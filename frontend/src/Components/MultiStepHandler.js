@@ -4,6 +4,7 @@ import Login from './Login/login.component';
 import SiteSelection from './SiteSelection/SiteSelection';
 import  SiteUpload  from './SiteMapUpload/upload.component';
 import Disclaimer from './Disclaimer/disclaimer.component';
+import HazardPage from './HazardSelect/HazardPage';
 
 
 export class MultiStepHandler extends Component {
@@ -83,6 +84,15 @@ export class MultiStepHandler extends Component {
                             />
                         )
                         //Continue making cases for as many pages as we need.
+                    case 5:
+                    return (
+                        <HazardPage
+                        nextStep = {this.nextStep}
+                        prevStep = {this.prevStep}
+                        handleChange= {this.handleChange}
+                        values = {values}
+                        />
+                    )
            
            }       
            
