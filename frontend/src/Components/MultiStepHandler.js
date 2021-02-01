@@ -17,7 +17,6 @@ export class MultiStepHandler extends Component {
         siteaddress: '',
         sqmSiteSize: '',
         warehouse: '',
-
     }
 
     showHaz = (hazardList) => {
