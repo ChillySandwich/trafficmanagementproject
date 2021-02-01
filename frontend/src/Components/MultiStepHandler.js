@@ -14,7 +14,6 @@ export class MultiStepHandler extends Component {
         siteaddress: '',
         sqmSiteSize: '',
         warehouse: '',
-
     }
     //put step value forward once, for submit buttons
     nextStep = () => {
