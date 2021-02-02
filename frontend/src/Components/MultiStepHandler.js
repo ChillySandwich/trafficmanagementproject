@@ -20,6 +20,7 @@ export class MultiStepHandler extends Component {
         siteaddress: '',
         sqmSite: '',
         warehouse: '',
+        imageState: '',
         disclaimer: false,
         siteImageUplodaded: false,
         hazardDropCompleted: false,
