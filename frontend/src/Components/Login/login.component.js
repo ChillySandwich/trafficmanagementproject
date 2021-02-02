@@ -30,30 +30,30 @@ export default class Login extends Component {
 
             <Grid item xs={6}>
                 <div className="loginForm">
-            <form >
+            <form style={{borderRadius: '50px', padding: '30px'}}>
 
             <h3>Welcome | Nau Mai</h3>
 
             <div>
-                <label>Email</label>
+                <label style={{color:"black"}}>Email</label>
                 <input type="email" className = "emailInput" onChange={handleChange('email')} defaultValue={values.email} placeholder="Enter email" />
             </div>
 
             <div>
-                <label>Password</label>
-                <input type="password" placeholder="Enter password" />
+                <label style={{color:"black"}}>Password</label>
+                <input style={{color: 'black'}} type="password" placeholder="Enter password" />
             </div>
 
             <div className="form-group">
                 <div>
                     <input type="checkbox" id="customCheck1" />
-                    <label htmlFor="customCheck1">Remember me</label>
+                    <label style={{color:"black"}} htmlFor="customCheck1">Remember me</label>
                 </div>
             </div>
 
-            <input type='button' value="Submit" onClick={this.continue} />
+            <input className= 'buttonStyle' type='button' value="Submit" onClick={this.continue} />
             
-            <p > 
+            <p style={{padding: '10px', fontSize: '15px'}}> 
            
                 Forgot <a href="#">password?</a>
             </p>

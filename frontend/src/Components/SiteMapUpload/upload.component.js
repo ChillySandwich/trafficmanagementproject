@@ -28,8 +28,8 @@ export class Upload extends Component{
       <div>
         <input type="file" onChange={this.handleChange}/>
         <img src={this.state.file}/>
-        <input type='button' value="Back" onClick={this.back}/>
-        <input type='button' value="Submit" onClick={this.continue}/> 
+        <input  className= 'buttonStyle'type='button' value="Back" onClick={this.back}/>
+        <input className= 'buttonStyle' type='button' value="Submit" onClick={this.continue}/> 
         
       </div>
     );

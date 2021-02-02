@@ -1,5 +1,7 @@
 
-/** page css */
+  /** page css */
+  @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');  
+
   .main {
     background: #0bb791;
     font-size: 20px;
@@ -20,40 +22,40 @@
   }
   .header {
     grid-area: header;
-}
-.emailInput {
+  }
+  .emailInput {
   font-size:20px;
-  
+
   font-weight: 400;
-}
-.main {
+  }
+  .main {
     grid-area: main;
     text-align: center;
-}
-.footer {
+  }
+  .footer {
     grid-area: footer;
-} 
-.disclaimerParagraph {
- background-color: white;
- border-style: line;
- mask-border-width: 20px;
-} 
-    body {
-    min-height: 100vh;
-    width: 100vw;
-    height: 100vh;
-    display: flex; 
-    font-weight: 400;
-    font-family: sans-serif;
-    background: #18ad5b;  
-    display: grid;
-    grid-template-rows: 1fr 5fr 1fr;
-    grid-template-columns: 1fr 4fr;
-    vertical-align: center;
-    grid-template-areas: 
-    "header header"
-    "main main"
-    "footer footer"; 
+  } 
+  .disclaimerParagraph {
+  background-color: white;
+  border-style: line;
+  mask-border-width: 20px;
+  } 
+  body {
+  min-height: 100vh;
+  width: 100vw;
+  height: 100vh;
+  display: flex; 
+  font-weight: 400;
+  font-family: 'Roboto', sans-serif;
+  background: #18ad5b;  
+  display: grid;
+  grid-template-rows: 1fr 5fr 1fr;
+  grid-template-columns: 1fr 4fr;
+  vertical-align: center;
+  grid-template-areas: 
+  "header header"
+  "main main"
+  "footer footer"; 
   }
     
   /** Component assets */
@@ -61,27 +63,45 @@
     display: grid;
     grid-template-columns: 70% 30%;
   }
-  
+
   .hazard {
     background: #f4f4f4;
     margin: 5px;
     padding: 10px 20px;
     cursor: pointer;
   }
-  
+
   .hazard h3 {
     display: flex;
     align-items: center;
     justify-content:space-between;
   }
-  
+
   .hazard img {
     width: 100px;
     height: 100px;
   }
- 
+
   .logo {
     height: 200px;
     width: 300px;
-}
-  
+  }
+
+  .buttonStyle{
+    color: black;  
+    padding: 5px; 
+    border-Radius: 8px;
+    font-Size: 20px;
+    margin: 10px;
+    width: 100px
+  }
+
+  h3{
+  color: white;
+  font-weight: bold;
+  }
+
+  .disclaimerParagraph{
+    padding: 30px;
+    border-Radius: 8px;
+  }

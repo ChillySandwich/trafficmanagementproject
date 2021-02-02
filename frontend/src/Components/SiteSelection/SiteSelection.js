@@ -73,14 +73,14 @@ export class SiteSelection extends Component {
         </Grid>
         <Grid item xs={6}>
           <form>
-<h3>Site Details | taipitopito pae</h3>
+<h4>Site Details | Taipitopito Pae</h4>
 
 <div className="form-group">
     <input type="text" className="form-control" onChange={handleChange('industry')} defaultValue={values.industry} placeholder="Enter Industry" />
 </div>
 
 <div className="form-group">
-<input ref={this.autocompleteInput}  id="autocomplete" onChange={handleChange('siteaddress')} defaultValue={values.siteaddress} placeholder="Enter your Address"
+<input ref={this.autocompleteInput} className="form-control"  id="autocomplete" onChange={handleChange('siteaddress')} defaultValue={values.siteaddress} placeholder="Enter your Address"
 type="text"></input>
 </div>
 
@@ -109,8 +109,8 @@ type="text"></input>
       />
       </div>
         </Grid>
-        <input type='button' value="Back" onClick={this.back}/>
-        <input type='button' value="Submit" onClick={this.continue}/>
+        <input className= 'buttonStyle' type='button' value="Back" onClick={this.back}/>
+        <input className= 'buttonStyle'type='button' value="Submit" onClick={this.continue}/>
       </Grid>
       </div>
        );

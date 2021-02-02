@@ -28,10 +28,9 @@ export default class Layout extends React.Component{
                 <Grid item xs={6}>
                     <SideContainer>
                     <Hazards />
-                    <input type='button' value="Back" onClick={this.back}/>
-                    <input type='button' value="Continue" onClick={this.continue}/> 
-        
                     </SideContainer>
+                    <input type='button' className= 'buttonStyle' value="Back" onClick={this.back}/>
+                    <input type='button' className= 'buttonStyle' value="Continue" onClick={this.continue}/> 
                 </Grid>
                 <Grid item xs={6}>
                     <ImageContainer />
