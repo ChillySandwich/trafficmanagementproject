@@ -94,7 +94,7 @@ function HazardPage(props) {
             </DropdownButton>
         </div> */}
         <div>
-            <h4>Select Hazard | Tohua te morearea</h4>
+            <h3>Select Hazard | Tohua te morearea</h3>
             <HazardList hazards={hazards} clickHazard={clickHazard}/>
         </div>
 
@@ -102,8 +102,7 @@ function HazardPage(props) {
             <h3>Your Hazards | Kōwhiri mōrearea</h3>
             <HazardListSelected hazards={selHaz} clickHazardSelected={clickHazardSelected} />
         </div>
-        
-        
+                
     </div>
 
     
