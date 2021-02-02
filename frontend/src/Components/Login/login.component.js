@@ -35,12 +35,10 @@ export default class Login extends Component {
                             <h1>Welcome | Nau Mai</h1>
 
                             <div>
-                                <label style={{ color: "black" }}>Email</label>
                                 <input className="form-control" type="email" onChange={handleChange('email')} defaultValue={values.email} placeholder="Enter email" />
                             </div>
 
                             <div>
-                                <label style={{ color: "black" }}>Password</label>
                                 <input className="form-control" style={{ color: 'black' }} type="password" placeholder="Enter password" />
                             </div>
 

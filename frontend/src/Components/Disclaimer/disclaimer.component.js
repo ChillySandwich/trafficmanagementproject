@@ -18,7 +18,7 @@ export default class Login extends Component {
   render() {
     const { values, handleChange } = this.props;
     return (
-      <div>
+      <div >
         <h1 >Disclaimer | Whakakahoretanga </h1>
         <p className="disclaimerParagraph">The Commissioner is not liable for any damages arising in contract, tort or otherwise from the use of or inability to use this site or any material contained in it, or from any action or decision taken as a result of using the site.
 
