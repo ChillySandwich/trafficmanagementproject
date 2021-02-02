@@ -111,3 +111,9 @@
     padding: 30px;
     border-Radius: 8px;
   }
+
+  .inflow-outflow-canvas {
+    background: url("./SiteInflowOutflow/Site.JPG");
+    background-repeat: no-repeat;
+    background-size: 85%;
+  }

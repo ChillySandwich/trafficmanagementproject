@@ -9,6 +9,8 @@ import HazardDrop from './HazardAllocation/Layout';
 import Logo from './logo.png';
 import './App.css';
 import './FileUploadFinal/Imageloader.css';
+import SiteDrawingLayout from './SiteInflowOutflow/SiteDrawingLayout';
+import PDF from './PDFDownloadPage/pdf';
 
 export class MultiStepHandler extends Component {
     // Put some empty fields in here to hold data when it needs to be changed e.g. industry: ''. will need to do this for anything we want in the final 'pdf' 
@@ -123,7 +125,31 @@ export class MultiStepHandler extends Component {
                     // data={{ showHaz: this.state.selectedHaz }}
                     />
                 )
+            case 7:
+                return (
 
+                    <SiteDrawingLayout
+                        nextStep={this.nextStep}
+                        prevStep={this.prevStep}
+                        handleChange={this.handleChange}
+                        values={values}
+                        showHaz={this.hazardList}
+                    />
+                )
+
+            case 8:
+                return (
+                    <PDF
+                        values={values}
+                        handleChange={this.handleChange}
+                        prevStep={this.prevStep}
+                        email={this.state.email}
+                        industry={this.state.industry}
+                        siteaddress={this.state.siteaddress}
+                        sqmSite={this.state.sqmSite}
+                        warehouse={this.state.warehouse}
+                    />
+                )
         }
 
 
