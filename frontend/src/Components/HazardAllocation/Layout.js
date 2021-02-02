@@ -19,6 +19,7 @@ export default class Layout extends React.Component{
                 <Grid item xs={6}>
                     <ImageContainer />
                 </Grid>
+                <input type='button' value="Selected Hazards" onClick={() => console.log(this.props.data.showHaz)}/>
             </Grid>
         );
     }
