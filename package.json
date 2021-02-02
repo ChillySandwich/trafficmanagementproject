@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "google-maps-react": "^2.0.6",
+    "react-bootstrap": "^1.4.3",
+    "react-draggable": "^4.4.3"
+  }
+}

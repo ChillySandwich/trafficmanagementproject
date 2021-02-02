@@ -5,14 +5,15 @@ import SiteSelection from './SiteSelection/SiteSelection';
 import  SiteUpload  from './FileUploadFinal/Imageloader';
 import './FileUploadFinal/Imageloader.css';
 import Disclaimer from './Disclaimer/disclaimer.component';
+import Layout from './HazardAllocation/Layout';
 import HazardPage from './HazardSelect/HazardPage';
 import HazardDrop from './HazardDrop/index';
 import Logo from './logo.png';
 import './App.css';
 
-
 export class MultiStepHandler extends Component {
     // Put some empty fields in here to hold data when it needs to be changed e.g. industry: ''. will need to do this for anything we want in the final 'pdf' 
+<<<<<<< HEAD
     state = {
         step: 1,
         checkBox: false,
@@ -24,7 +25,31 @@ export class MultiStepHandler extends Component {
         disclaimer: false,
         siteImageUplodaded: false,
         hazardDropCompleted: false,
+=======
+    
+    
+    constructor(props) {
+        super(props);
+        this.state = {
+            selectedHaz: [],
+            step: 1,
+            industry: '',
+            siteaddress: '',
+            sqmSiteSize: '',
+            warehouse: '',
+    
+        }
     }
+    
+
+    //these are the user selected hazards
+    showHaz = (hazardList) => {
+        console.log(hazardList)
+        this.setState({selectedHaz: hazardList})
+        console.log(this.state);
+>>>>>>> 3e526c3a336427000451542167f2938fe7f4c86a
+    }
+
     //put step value forward once, for submit buttons
     nextStep = () => {
         const {step } = this.state;
@@ -50,28 +75,29 @@ export class MultiStepHandler extends Component {
 // Switch case for displaying each page, pass in current state of step as parameter to choose current case
            switch(step) {
                //Login page
-               case 1:
-                   return (
-                       <Login
-                       nextStep = {this.nextStep}
-                       handleChange={this.handleChange}
-                       values = {values}  
+            //    case 1:
+            //        return (
+            //            <Login
+            //            nextStep = {this.nextStep}
+            //            handleChange={this.handleChange}
+            //            values = {values}  
 
-                      />
-                   )
-                    case 2:
-                        return (
-                            <Disclaimer
-                            nextStep = {this.nextStep}
-                        prevStep = {this.prevStep}
-                        handleChange = {this.handleChange}
-                         values = {values}
+            //           />
+            //        )
+            //         case 2:
+            //             return (
+            //                 <Disclaimer
+            //                 nextStep = {this.nextStep}
+            //             prevStep = {this.prevStep}
+            //             handleChange = {this.handleChange}
+            //              values = {values}
                             
-                            />
-                        )
+            //                 />
+            //             )
 
-                      //Site Selection 
+            //           //Site Selection 
                    
+<<<<<<< HEAD
                    case 3:
                     
                        return (
@@ -95,16 +121,39 @@ export class MultiStepHandler extends Component {
                             values = {values}
                             />
                         )
+=======
+            //        case 3:
+            //            return (
+            //            <SiteSelection
+            //            nextStep = {this.nextStep}
+            //            prevStep = {this.prevStep}
+            //            handleChange = {this.handleChange}
+            //            values = {values}
+            //         />
+            //            )
+            //             // e.g. hazard select. import the component that is needed and then return that component below.
+            //         case 4:
+            //             return (
+            //                 <SiteUpload
+            //                 nextStep = {this.nextStep}
+            //                 prevStep = {this.prevStep}
+            //                 handleChange={this.handleChange}
+            //                 values = {values}
+            //                 />
+            //             )
+>>>>>>> 3e526c3a336427000451542167f2938fe7f4c86a
                         //Continue making cases for as many pages as we need.
-                    case 5:
+                    case 1:
                     return (
                         <HazardPage
                         nextStep = {this.nextStep}
                         prevStep = {this.prevStep}
                         handleChange= {this.handleChange}
                         values = {values}
-                        />
+                        showHaz = {this.showHaz}
+                        />                        
                     )
+<<<<<<< HEAD
                     //Hazard Drop
                     case 6:
                     return (
@@ -115,6 +164,19 @@ export class MultiStepHandler extends Component {
                         values = {values}
                         />
                     )
+=======
+                    case 2:
+                        return (
+                            <Layout
+                            nextStep = {this.nextStep}
+                            prevStep = {this.prevStep}
+                            handleChange = {this.handleChange}
+                            values = {values}
+                            data = {{showHaz: this.state.selectedHaz}}
+                            
+                            />                        
+                        )
+>>>>>>> 3e526c3a336427000451542167f2938fe7f4c86a
            
             }       
            
