@@ -9,13 +9,13 @@ function Canvas(props) {
 
     useEffect(() => {
         const canvas = canvasRef.current;
-        canvas.width = window.innerWidth*2;
-        canvas.height = window.innerHeight*2;
+        canvas.width = window.innerWidth * 2;
+        canvas.height = window.innerHeight * 2;
         canvas.style.width = `${window.innerWidth}px`;
         canvas.style.height = `${window.innerHeight}px`;
 
         const context = canvas.getContext("2d");
-        context.scale(2,2);
+        context.scale(2, 2);
         //context.globalAlpha = 0.01;
         context.lineCap = ("round");
         context.strokeStyle = props.colour;
@@ -24,8 +24,8 @@ function Canvas(props) {
 
     }, [props.colour])
 
-    const startDrawing = ({nativeEvent}) => {
-        const {offsetX, offsetY} = nativeEvent; 
+    const startDrawing = ({ nativeEvent }) => {
+        const { offsetX, offsetY } = nativeEvent;
         contextRef.current.beginPath();
         contextRef.current.moveTo(offsetX, offsetY);
         setIsDrawing(true);
@@ -36,22 +36,22 @@ function Canvas(props) {
         setIsDrawing(false);
     }
 
-    const draw = ({nativeEvent}) => {
-        if (!isDrawing){
-            return 
+    const draw = ({ nativeEvent }) => {
+        if (!isDrawing) {
+            return
         }
-        const {offsetX, offsetY} = nativeEvent;
+        const { offsetX, offsetY } = nativeEvent;
         contextRef.current.lineTo(offsetX, offsetY);
         contextRef.current.stroke();
     }
 
     return (
         <canvas
-            className = "inflow-outflow-canvas"
-            onMouseDown = {startDrawing}
-            onMouseUp = {finishDrawing}
-            onMouseMove = {draw}
-            ref = {canvasRef}
+            className="inflow-outflow-canvas"
+            onMouseDown={startDrawing}
+            onMouseUp={finishDrawing}
+            onMouseMove={draw}
+            ref={canvasRef}
         />
     );
 }

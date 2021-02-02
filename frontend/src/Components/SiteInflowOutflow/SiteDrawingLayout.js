@@ -15,10 +15,10 @@ function SiteDrawingLayout(props) {
         props.nextStep();
     }
     //'back' event handler, calls the prevStep method from MultiStepHandler to go back a page
-      const back = e => {
+    const back = e => {
         e.preventDefault();
         props.prevStep();
-      }
+    }
 
     function toggleColour() {
         if (colour === "red") {
@@ -29,23 +29,23 @@ function SiteDrawingLayout(props) {
     }
 
     function increase() {
-        setSize(prev => prev+1)
+        setSize(prev => prev + 1)
     }
 
     function decrease() {
-        if(size===1) {
+        if (size === 1) {
             return
         }
-        setSize(prev => prev-1)
+        setSize(prev => prev - 1)
     }
 
     return (
         <div className="site-draw-container">
-            <Canvas colour={colour} size={size}/>
-            <ToolBar toggleColour={toggleColour} decrease={decrease} increase={increase}/>
+            <Canvas colour={colour} size={size} />
+            <ToolBar toggleColour={toggleColour} decrease={decrease} increase={increase} />
 
-            <input  className= 'buttonStyle'type='button' value="Back" onClick={back}/>
-            <input className= 'buttonStyle' type='button' value="Submit" onClick={continuee}/> 
+            <input className='buttonStyle' type='button' value="Back" onClick={back} />
+            <input className='buttonStyle' type='button' value="Submit" onClick={continuee} />
         </div>
     );
 }

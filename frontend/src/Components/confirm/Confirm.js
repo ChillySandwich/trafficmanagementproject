@@ -17,25 +17,25 @@ export class Confirm extends Component {
 
   render() {
     const {
-      values: {email, industry, siteaddress, sqmSiteSize, warehouse, disclaimer, siteImageUplodaded, hazardSelect, hazardDropCompleted }
+      values: { email, industry, siteaddress, sqmSiteSize, warehouse, disclaimer, siteImageUplodaded, hazardSelect, hazardDropCompleted }
     } = this.props;
     return (
 
-        <div>
-            <h1> Confirm Your Traffic Management Plan</h1>
-            <ul>
-                <li>
-                    {email}
-                </li>
-                <li>
-                    {industry}
-                </li>
-                <li>
-                    {siteaddress}
-                </li>
-            </ul>
-        </div>
-        
+      <div>
+        <h1> Confirm Your Traffic Management Plan</h1>
+        <ul>
+          <li>
+            {email}
+          </li>
+          <li>
+            {industry}
+          </li>
+          <li>
+            {siteaddress}
+          </li>
+        </ul>
+      </div>
+
     );
   }
 }
