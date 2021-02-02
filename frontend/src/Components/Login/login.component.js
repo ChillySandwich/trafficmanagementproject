@@ -32,21 +32,21 @@ export default class Login extends Component {
                 <div className="loginForm">
             <form style={{borderRadius: '50px', padding: '30px'}}>
 
-            <h3>Welcome | Nau Mai</h3>
+            <h1>Welcome | Nau Mai</h1>
 
             <div>
                 <label style={{color:"black"}}>Email</label>
-                <input type="email" className = "emailInput" onChange={handleChange('email')} defaultValue={values.email} placeholder="Enter email" />
+                <input className="form-control" type="email" onChange={handleChange('email')} defaultValue={values.email} placeholder="Enter email" />
             </div>
 
             <div>
                 <label style={{color:"black"}}>Password</label>
-                <input style={{color: 'black'}} type="password" placeholder="Enter password" />
+                <input  className="form-control" style={{color: 'black'}} type="password" placeholder="Enter password" />
             </div>
 
             <div className="form-group">
                 <div>
-                    <input type="checkbox" id="customCheck1" />
+                    <input  className="form-control" type="checkbox" id="customCheck1" />
                     <label style={{color:"black"}} htmlFor="customCheck1">Remember me</label>
                 </div>
             </div>
