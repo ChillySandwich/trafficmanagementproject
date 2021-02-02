@@ -8,7 +8,7 @@ import {useState} from 'react';
 
 
 export const Hazard = ({ hazard, onDelete }) => {
-    const [show, setShow] = useState(false);
+    // const [show, setShow] = useState(false);
     
     return (
         
@@ -24,4 +24,3 @@ export const Hazard = ({ hazard, onDelete }) => {
 }
 
 export default Hazard;
-

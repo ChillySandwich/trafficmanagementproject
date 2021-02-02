@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import logo from './logo.png';
 import MultiStepHandler from './MultiStepHandler';
 import {BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
@@ -12,9 +13,11 @@ export default function App () {
   return (  <Router>
 
  <body>
- <div className="header">header</div>
+ <div className="header">
+   <h1>TMP</h1>
+ </div>
  <div className="main"><MultiStepHandler/></div> 
- <div className="footer">footer</div>
+ <div className="footer"></div>
  </body>
  <Switch>
 

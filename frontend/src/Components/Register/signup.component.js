@@ -11,8 +11,7 @@ export default class SignUp extends Component {
                     <input type="text" className="form-control" placeholder="Name" />
                 </div>
 
-           
-
+        
                 <div className="form-group">
                     <label>Email</label>
                     <input type="email" className="form-control" placeholder="Enter email" />
