@@ -25,7 +25,7 @@ const pdf = (props) => {
         <Pdf targetRef={ref} filename="Traffic-management-plan.pdf">
             {({ toPdf}) => <button onClick={toPdf}> Download TMP </button>}
         </Pdf>
-        <input type='button' value="Back" onClick={back} />
+        <input type='button' className= 'buttonStyle' value="Back" onClick={back} />
         </>
     );
 } 
