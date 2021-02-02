@@ -17,7 +17,7 @@ export default function App () {
    <h1>TMP</h1>
  </div>
  <div className="main"><MultiStepHandler/></div> 
- <div className="footer">footer</div>
+ <div className="footer"></div>
  </body>
  <Switch>
 
