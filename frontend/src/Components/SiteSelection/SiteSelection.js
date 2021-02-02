@@ -76,20 +76,20 @@ export class SiteSelection extends Component {
 <h4>Site Details | Taipitopito Pae</h4>
 
 <div className="form-group">
-    <input type="text" className="form-control" onChange={handleChange('industry')} defaultValue={values.industry} placeholder="Enter Industry" />
+    <input type="text" className="form-control" style={{color:'black'}} onChange={handleChange('industry')} defaultValue={values.industry} placeholder="Enter Industry" />
 </div>
 
 <div className="form-group">
-<input ref={this.autocompleteInput} className="form-control"  id="autocomplete" onChange={handleChange('siteaddress')} defaultValue={values.siteaddress} placeholder="Enter your Address"
+<input ref={this.autocompleteInput} className="form-control" style={{color:'black'}}  id="autocomplete" onChange={handleChange('siteaddress')} defaultValue={values.siteaddress} placeholder="Enter your Address"
 type="text"></input>
 </div>
 
 <div className="form-group">
-    <input type="text" className="form-control" placeholder="Enter Sqm" />
+    <input type="text" className="form-control" style={{color:'black'}}  placeholder="Enter Sqm" />
 </div>
 
 <div className="form-group">
-    <input type="text" className="form-control" placeholder="Enter Warehouse" />
+    <input type="text" className="form-control"  style={{color:'black'}}  placeholder="Enter Warehouse" />
 </div>
 
 </form>

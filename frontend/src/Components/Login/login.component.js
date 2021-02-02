@@ -25,7 +25,7 @@ export default class Login extends Component {
             <Grid container spacing={3}>
 
                 <Grid item xs={6} className="logoSide">
-                    <img alt="Logo" className="Logo" src={Logo} />
+                    <img alt="Logo" className="Logo" style={{margin: '50px', width:'450px', height:'340px'}} src={Logo} />
                 </Grid>
 
                 <Grid item xs={6}>
@@ -51,7 +51,7 @@ export default class Login extends Component {
                                 </div>
                             </div>
 
-                            <input className='buttonStyle' type='button' value="Submit" onClick={this.continue} />
+                            <input className='buttonStyle' type='button' value="Login" onClick={this.continue} />
 
                             <p style={{ padding: '10px', fontSize: '15px' }}>
 

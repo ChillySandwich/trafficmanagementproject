@@ -2,22 +2,23 @@
   @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');  
 
   .main {
-    background: #0bb791;
+    background:  #5B9BB3;  
     font-size: 20px;
     padding-left:50px;
     padding-right: 50px;
     
   }
   .header {
-    background: #0bb791;
+    background:  #5B9BB3;  
   }
   .footer {
-    background: #0bb791;
+    background:  #5B9BB3;  
   }
   .loginForm {
     background: rgba(210, 224, 224, 0.533);
     align-items:center;
     font-size: 25px;
+    border-Radius: 10px;
   }
   .header {
     grid-area: header;
@@ -46,7 +47,7 @@
   display: flex; 
   font-weight: 400;
   font-family: 'Roboto', sans-serif;
-  background: #18ad5b;  
+  background: #5B9BB3;  
   display: grid;
   grid-template-rows: 1fr 5fr 1fr;
   grid-template-columns: 1fr 4fr;
@@ -71,7 +72,7 @@
   .hazard {
     
     border-radius: 25px;
-    background: #aaf683;
+    background:  #5B9BB3;  
     margin: 20px;
     padding: 10px 20px;
     cursor: pointer;
@@ -94,18 +95,22 @@
   }
 
   .buttonStyle{
-    color: black;  
+    background-color: #2f4063;
+    color: white;  
     padding: 5px; 
     border-Radius: 8px;
     font-Size: 20px;
     margin: 10px;
-    width: 100px
+    width: 100px;
+    border:none;
   }
 
   h1{
-  color: white;
+  color: black;
   font-weight: bold;
   }
+
+  
 
   .disclaimerParagraph{
     padding: 30px;
