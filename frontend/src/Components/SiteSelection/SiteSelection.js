@@ -109,8 +109,8 @@ type="text"></input>
       />
       </div>
         </Grid>
-        <input type='button' value="submit" onClick={this.continue}/> 
-        <input type='button' value="previous page" onClick={this.back}/>
+        <input type='button' value="Back" onClick={this.back}/>
+        <input type='button' value="Submit" onClick={this.continue}/>
       </Grid>
       </div>
        );

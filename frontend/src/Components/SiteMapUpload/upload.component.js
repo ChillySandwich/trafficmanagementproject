@@ -28,8 +28,9 @@ export class Upload extends Component{
       <div>
         <input type="file" onChange={this.handleChange}/>
         <img src={this.state.file}/>
-        <input type='button' value="submit" onClick={this.continue}/> 
-        <input type='button' value="previous page" onClick={this.back}/>
+        <input type='button' value="Back" onClick={this.back}/>
+        <input type='button' value="Submit" onClick={this.continue}/> 
+        
       </div>
     );
   }

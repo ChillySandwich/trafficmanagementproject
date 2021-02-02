@@ -58,7 +58,7 @@ const Imageloader = (props) => {
                     <button onClick={() => setImgPreview(null)}>Remove image</button>
                 )}
             </div>
-            <input type='button' value="Previous Page" onClick={back} />
+            <input type='button' value="Back" onClick={back} />
             <input type='button' value="Continue" onClick={continuee} />
         </div>
     );

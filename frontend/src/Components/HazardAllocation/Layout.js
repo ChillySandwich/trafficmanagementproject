@@ -7,13 +7,30 @@ import Grid from "@material-ui/core/Grid";
 
   
 export default class Layout extends React.Component{
+    //'Continue' event handler, calls the nextStep method from MultiStepHandler to go forward a page
+  continue = e => {
+    e.preventDefault();
+    this.props.nextStep();
+}
+//'back' event handler, calls the prevStep method from MultiStepHandler to go back a page
+  back = e => {
+    e.preventDefault();
+    this.props.prevStep();
+  }
+  handleChange = input => e => {
+    this.setState({[input]: e.target.value})
+}
     render(){
+        const { values, handleChange } = this.props;
         return(
 
             <Grid container spacing={3}>
                 <Grid item xs={6}>
                     <SideContainer>
                     <Hazards />
+                    <input type='button' value="Back" onClick={this.back}/>
+                    <input type='button' value="Continue" onClick={this.continue}/> 
+        
                     </SideContainer>
                 </Grid>
                 <Grid item xs={6}>
