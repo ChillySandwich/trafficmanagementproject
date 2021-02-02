@@ -5,11 +5,6 @@ import HazardList from './HazardList';
 import HazardListSelected from "./HazardListSelected";
 import { useState } from 'react';
 
-
-
-
-
-
 function HazardPage(props) {
 
     const [hazards, setHazards] = useState([
