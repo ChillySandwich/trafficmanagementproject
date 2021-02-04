@@ -1,0 +1,124 @@
+  /** page css */
+  @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');  
+
+  .main {
+    background:  #5B9BB3;  
+    font-size: 20px;
+    padding-left:50px;
+    padding-right: 50px;
+    
+  }
+  .header {
+    background:  #5B9BB3;  
+  }
+  .footer {
+    background:  #5B9BB3;  
+  }
+  .loginForm {
+    background: rgba(210, 224, 224, 0.533);
+    align-items:center;
+    font-size: 25px;
+    border-Radius: 10px;
+  }
+  .header {
+    grid-area: header;
+  }
+  .emailInput {
+  font-size:20px;
+
+  font-weight: 400;
+  }
+  .main {
+    grid-area: main;
+    text-align: center;
+  }
+  .footer {
+    grid-area: footer;
+  } 
+  .disclaimerParagraph {
+  background-color: white;
+  border-style: line;
+  mask-border-width: 20px;
+  } 
+  body {
+  min-height: 100vh;
+  width: 100vw;
+  height: 100vh;
+  display: flex; 
+  font-weight: 400;
+  font-family: 'Roboto', sans-serif;
+  background: #5B9BB3;  
+  display: grid;
+  grid-template-rows: 1fr 5fr 1fr;
+  grid-template-columns: 1fr 4fr;
+  vertical-align: center;
+  grid-template-areas: 
+  "header header"
+  "main main"
+  "footer footer"; 
+  }
+    
+  /* .hazard-page {
+    background: #60d394;
+  } */
+
+  .hazard-page-container {
+    padding: 50px;
+    display: grid;
+    grid-template-columns: 70% 30%;
+    
+  }
+  
+  .hazard {
+    
+    border-radius: 25px;
+    background:  #5B9BB3;  
+    margin: 20px;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  
+  .hazard h3 {
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+  }
+  
+  .hazard img {
+    border-radius: 25px;
+    width: 50%;
+  }
+
+  .logo {
+    height: 200px;
+    width: 300px;
+  }
+
+  .buttonStyle{
+    background-color: #2f4063;
+    color: white;  
+    padding: 5px; 
+    border-Radius: 8px;
+    font-Size: 20px;
+    margin: 10px;
+    width: 100px;
+    border:none;
+  }
+
+  h1{
+  color: black;
+  font-weight: bold;
+  }
+
+  
+
+  .disclaimerParagraph{
+    padding: 30px;
+    border-Radius: 8px;
+  }
+
+  .inflow-outflow-canvas {
+    background: url("./SiteInflowOutflow/Site.JPG");
+    background-repeat: no-repeat;
+    background-size: 85%;
+  }
