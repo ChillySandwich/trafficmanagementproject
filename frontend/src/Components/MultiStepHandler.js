@@ -1,7 +1,8 @@
 import { createGenerateClassName } from '@material-ui/core';
 import React, { Component } from 'react';
 import Login from './Login/login.component';
-import SiteSelection from './SiteSelection/SiteSelection';
+import SiteSelectionForm from './SiteSelection/SiteSelectionForm';
+import SiteSelectionMap from './SiteSelection/SiteSelectionMap';
 import SiteUpload from './FileUploadFinal/Imageloader';
 import Disclaimer from './Disclaimer/disclaimer.component';
 import HazardPage from './HazardSelect/HazardPage';
@@ -11,6 +12,7 @@ import './App.css';
 import './FileUploadFinal/Imageloader.css';
 import SiteDrawingLayout from './SiteInflowOutflow/SiteDrawingLayout';
 import PDF from './PDFDownloadPage/pdf';
+import Grid from "@material-ui/core/Grid";
 
 export class MultiStepHandler extends Component {
     // Put some empty fields in here to hold data when it needs to be changed e.g. industry: ''. will need to do this for anything we want in the final 'pdf' 
@@ -83,15 +85,25 @@ export class MultiStepHandler extends Component {
             case 3:
 
                 return (
-
-
-                    <SiteSelection
+                    <Grid container spacing={3}>
+                    <Grid item xs={6}>
+                    <SiteSelectionForm
                         nextStep={this.nextStep}
                         prevStep={this.prevStep}
                         handleChange={this.handleChange}
                         values={values}
+                        
                     />
-
+                    </Grid>
+                    <Grid item xs={6}>
+                    <SiteSelectionMap
+                      nextStep={this.nextStep}
+                      prevStep={this.prevStep}
+                      handleChange={this.handleChange}
+                      values={values}   
+                    />       
+                    </Grid>
+                    </Grid>
                 )
             // e.g. hazard select. import the component that is needed and then return that component below.
             case 4:
