@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import "./Imageloader.css";
 
 const Imageloader = (props) => {
-
     const [imgPreview, setImgPreview] = useState(null);
     const [error, setError] = useState(false);
     //'Continue' event handler, calls the nextStep method from MultiStepHandler to go forward a page
@@ -22,6 +21,7 @@ const Imageloader = (props) => {
         const ALLOWED_TYPES = ["image/png", "image/jpeg", "image/jpg"];
         if (selected && ALLOWED_TYPES.includes(selected.type)) {
             let reader = new FileReader();
+            
             reader.onloadend = () => {
                 setImgPreview(reader.result);
             };
@@ -30,6 +30,16 @@ const Imageloader = (props) => {
             setError(true);
         }
     };
+    React.useEffect(() => {
+        const data = localStorage.getItem('siteImg');
+        if (data) {
+            setImgPreview(JSON.parse(data));
+        }
+         }, [])
+
+    React.useEffect(() => {
+        localStorage.setItem('siteImg', JSON.stringify(imgPreview));
+    })
     return (
         <div className="Imageloader">
             <div className="container">
@@ -59,7 +69,7 @@ const Imageloader = (props) => {
                 )}
             </div>
             <input type='button'className= 'buttonStyle'  value="Back" onClick={back} />
-            <input type='button'className= 'buttonStyle' value="Continue" onClick={continuee} />
+            <input type='button'className= 'buttonStyle' value="Continue" onClick={continuee}/>
         </div>
     );
 };
