@@ -2,17 +2,17 @@
   @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');  
 
   .main {
-    background:  #5B9BB3;  
+    background:  #30BCED;  
     font-size: 20px;
     padding-left:50px;
     padding-right: 50px;
     
   }
   .header {
-    background:  #5B9BB3;  
+    background:  #30BCED;  
   }
   .footer {
-    background:  #5B9BB3;  
+    background:  #30BCED;  
   }
   .loginForm {
     background: rgba(210, 224, 224, 0.533);
@@ -95,13 +95,13 @@
   }
 
   .buttonStyle{
-    background-color: #2f4063;
-    color: white;  
+    background-color: #DFB464;
+    color: #E5E5E5;  
     padding: 5px; 
     border-Radius: 8px;
     font-Size: 20px;
     margin: 10px;
-    width: 100px;
+    width: 200px;
     border:none;
   }
 
