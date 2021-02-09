@@ -14,7 +14,8 @@ export default function App () {
 
  <body>
  <div className="header">
-   <h1>TMP</h1>
+   <h1 style={{color:'white', fontWeight: "bold", marginLeft: "40px", marginTop: "20px", marginBottom: '10px'}}>Site Mate</h1>
+   <div style={{color:'white', marginLeft: "40px"}}>Hoki ora mai Come home safely</div>
  </div>
  <div className="main"><MultiStepHandler/></div> 
  <div className="footer"></div>

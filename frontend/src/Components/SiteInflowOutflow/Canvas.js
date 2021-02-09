@@ -1,4 +1,4 @@
-import SiteImg from '../HazardAllocation/Site.JPG';
+
 import React, { useRef, useEffect, useState } from 'react'
 
 function Canvas(props) {

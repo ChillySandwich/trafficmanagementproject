@@ -1,9 +1,4 @@
 import React from 'react';
-import SideContainer from "./SideContainer";
-import ImageContainer from "./ImageContainer";
-import Hazard from "./Hazard";
-import Hazards from "./Hazards";
-import Grid from "@material-ui/core/Grid";
 import Canvas from "./Canvas";
 import "./Layout.css"
 
