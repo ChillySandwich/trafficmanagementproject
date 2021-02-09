@@ -6,7 +6,6 @@
     font-size: 20px;
     padding-left:50px;
     padding-right: 50px;
-    
   }
   .header {
     background:  #30BCED;  
@@ -47,7 +46,7 @@
   display: flex; 
   font-weight: 400;
   font-family: 'Roboto', sans-serif;
-  background: #5B9BB3;  
+  background: rgba(113, 185, 227, 1);
   display: grid;
   grid-template-rows: 1fr 5fr 1fr;
   grid-template-columns: 1fr 4fr;
@@ -55,7 +54,8 @@
   grid-template-areas: 
   "header header"
   "main main"
-  "footer footer"; 
+  "footer footer";
+  
   }
     
   /* .hazard-page {
@@ -72,7 +72,7 @@
   .hazard {
     
     border-radius: 25px;
-    background:  #5B9BB3;  
+    background:  rgba(229, 229, 229, 1);
     margin: 20px;
     padding: 10px 20px;
     cursor: pointer;
@@ -86,7 +86,19 @@
   
   .hazard img {
     border-radius: 25px;
-    width: 50%;
+    width: 70%;
+  }
+
+  .addIcon {
+    color: rgba(104, 228, 170, 1);
+    width: 2em;
+    height: 2em;
+  }
+
+  .removeIcon {
+    color: rgba(81, 78, 78, 1);
+    width: 2em;
+    height: 2em;
   }
 
   .logo {
@@ -122,3 +134,56 @@
     background-repeat: no-repeat;
     background-size: 85%;
   }
+
+  .board {
+    /* background: url("./SiteInflowOutflow/map.PNG"); */
+    /* justify-content: center; */
+    /* align-self: center; */
+    background-color: white;
+    outline: 2px solid black;
+    border-radius: '10px',
+  }
+
+  .sketch {
+    justify-content: center;
+    min-height: 100vh;
+  }
+
+  .drawButtons {
+    background: rgba(233, 180, 100, 1);
+    border-radius: 10px;
+    
+  }
+
+  .box {
+    float: left;
+    height: 20px;
+    width: 20px;
+    margin-bottom: 15px;
+    border: 1px solid black;
+    clear: both;
+  }
+  
+  .red {
+    background-color: red;
+  }
+  
+  .green {
+    background-color: green;
+  }
+  
+  .yellow {
+    background-color: yellow;
+  }
+
+  .orange {
+    background-color: orange;
+  }
+
+  .helpMessage {
+    background-color: white;
+    border-radius: 10px;
+  }
+
+
+
