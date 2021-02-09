@@ -24,8 +24,10 @@ const Imageloader = (props) => {
             
             reader.onloadend = () => {
                 setImgPreview(reader.result);
+                props.setUploadedImage(reader.result);
             };
             reader.readAsDataURL(selected);
+            
         } else {
             setError(true);
         }

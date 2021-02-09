@@ -92,7 +92,8 @@ function HazardPage(props) {
   //const { values, handleChange } = props;
 
   return (
-    <div>      
+    <div>
+        <img src={props.uploadedImage} alt=""></img>
       <div className="hazard-page-container">
           
           {/* <div>
@@ -101,6 +102,7 @@ function HazardPage(props) {
             </DropdownButton>
         </div> */}
         <div>
+            
             <h1 className="pageTitle">Tukuake Nga Korero</h1>
             <h1 className="pageTitle">Upload your site information</h1>
             <div className="dropdown-buttons">

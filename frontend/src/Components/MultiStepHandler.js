@@ -39,6 +39,7 @@ export class MultiStepHandler extends Component {
             hazardDropCompleted: false,
             logo: Logo,
             uploadImg: null,
+            uploadedImage: null,
             img: null,
             dndImg: null
         }
@@ -70,6 +71,12 @@ export class MultiStepHandler extends Component {
             dndImg: passedImg
         })
     }
+
+    setUploadedImage = (image) => {
+        this.setState({
+            uploadedImage: image
+        })
+    }
     render() {
 
         const { step } = this.state;
@@ -77,25 +84,17 @@ export class MultiStepHandler extends Component {
         const values = { email, industry, siteaddress, sqmSiteSize, warehouse, disclaimer, siteImageUplodaded, hazardSelect, hazardDropCompleted, selectedHaz }
         // Switch case for displaying each page, pass in current state of step as parameter to choose current case
         switch (step) {
+            
+            //Login page
             case 1:
-                    return (
-                        <HazardPage
-                            nextStep={this.nextStep}
-                            prevStep={this.prevStep}
-                            handleChange={this.handleChange}
-                            values={values}
-                        />
-                    )
-            // Login page
-            // case 1:
-            //     return (
-            //         <Login
-            //             nextStep={this.nextStep}
-            //             handleChange={this.handleChange}
-            //             values={values}
+                return (
+                    <Login
+                        nextStep={this.nextStep}
+                        handleChange={this.handleChange}
+                        values={values}
  
-            //         />
-            //     )
+                    />
+                )
             case 2:
                 return (
                     <Disclaimer
@@ -140,6 +139,7 @@ export class MultiStepHandler extends Component {
                         prevStep={this.prevStep}
                         handleChange={this.handleChange}
                         values={values}
+                        setUploadedImage={this.setUploadedImage}
                     />
                 )
                 case 5:
@@ -149,6 +149,7 @@ export class MultiStepHandler extends Component {
                             prevStep={this.prevStep}
                             handleChange={this.handleChange}
                             values={values}
+                            uploadedImage={this.state.uploadedImage}
                         />
                     )
                 //Hazard Drop
