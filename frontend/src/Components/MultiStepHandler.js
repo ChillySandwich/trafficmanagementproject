@@ -14,6 +14,7 @@ import SiteDrawingLayout from './SiteInflowOutflow/SiteDrawingLayout';
 import PDF from './PDFDownloadPage/pdf';
 import Grid from "@material-ui/core/Grid";
 import DrawContainer from './SiteInflowOutflow/DrawContainer';
+import TestTest from './SiteInflowOutflow/TestTest';
 
 
 export class MultiStepHandler extends Component {
@@ -36,7 +37,10 @@ export class MultiStepHandler extends Component {
             disclaimer: false,
             siteImageUplodaded: false,
             hazardDropCompleted: false,
-            logo: Logo
+            logo: Logo,
+            uploadImg: null,
+            img: null,
+            dndImg: null
         }
     }
     //put step value forward once, for submit buttons
@@ -59,6 +63,11 @@ export class MultiStepHandler extends Component {
     setImg = (passedImg) => {
         this.setState({
             img: passedImg
+        })
+    }
+    setDndImg = (passedImg) => {
+        this.setState({
+            dndImg: passedImg
         })
     }
     render() {
@@ -142,6 +151,7 @@ export class MultiStepHandler extends Component {
                             handleChange={this.handleChange}
                             values={values}
                             showHaz={this.hazardList}
+                            setDndImg={this.setDndImg}
                         // data={{ showHaz: this.state.selectedHaz }}
                         />
                     )
@@ -153,10 +163,9 @@ export class MultiStepHandler extends Component {
                             prevStep={this.prevStep}
                             handleChange={this.handleChange}
                             values={values}
-                            showHaz={this.hazardList}
+                            setImg={this.setImg}
                         />
-                    )
-     
+                    )     
                 case 8:
                     return (
                         <PDF

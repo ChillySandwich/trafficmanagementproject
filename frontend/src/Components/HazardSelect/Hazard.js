@@ -5,6 +5,7 @@ const Hazard = ({hazard, clickHazard, img}) => {
         <div className = 'hazard'>
             <h3>{hazard.name} <FaPlus className="addIcon" onClick={() => clickHazard(hazard.id)}/></h3>
             <img src={hazard.img} alt=""/>
+            
         </div>
     )
 }
