@@ -8,7 +8,7 @@
     padding-right: 50px;
   }
   .header {
-    background:  rgba(113, 185, 227, 1); 
+    background:  rgba(113, 185, 227, 1);  
   }
   .footer {
     background:  rgba(113, 185, 227, 1);  
@@ -107,13 +107,15 @@
   }
 
   .buttonStyle{
-    background-color: #2f4063;
-    color: white;  
+    background-color: rgba(233, 180, 100, 1);
+    color: rgba(81, 78, 78, 1); 
     padding: 5px; 
-    border-Radius: 8px;
-    font-Size: 20px;
+    border-Radius: 10px;
+    font-Size: 30px;
+    font-weight: 300;
     margin: 10px;
-    width: 100px;
+    height: 100px;
+    width: 300px;
     border:none;
   }
 
@@ -152,7 +154,7 @@
   .drawButtons {
     background: rgba(233, 180, 100, 1);
     border-radius: 10px;
-    
+    color: rgba(81, 78, 78, 1);    
   }
 
   .box {
