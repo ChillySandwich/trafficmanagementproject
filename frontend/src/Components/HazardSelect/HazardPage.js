@@ -11,28 +11,37 @@ function HazardPage(props) {
         {
             id: 1,
             name: "Forklift",
-            description: "Heavy vehicle, not to be trifled with",
+            description: "...",
             selected: false,
-            img: "https://www.xilin.com/wp-content/uploads/2013/08/FB20R.jpg",
-            image: <img style={{height: '40px', width: '40px'}}img src="https://tinyurl.com/y3aef9kt" alt=""> </img>
+            img: "./Forklift.png",
         },
         {
             id: 2,
-            name: "Racking",
-            text: "Racking",
-            description: "Heavy storage, may collapse if hit",
+            name: "Chemical Hazard",
+            description: "...",
             selected: false,
-            img: "https://novalok.co.nz/wp-content/uploads/protection-On-site-racking-2.jpg",
-            image: <img style={{height: '40px', width: '60px'}}img src="https://tinyurl.com/y67vdnmu" alt=""></img>
+            img: "./Barrel.png",
         },
         {
             id: 3,
             name: "Truck",
-            text: "Truck",
-            description: "Even heavier vehicle, not to be trifled with",
+            description: "...",
             selected: false,
-            img: "https://www.hireace.co.nz/site/hireacerental/images/Vehicles/Commercial/Tail-Lift-Furniture-truck-hire.jpg",
-            image: <img style={{height: '40px', width: '50px'}} img src="https://tinyurl.com/y3rxt7hh" alt=""></img>
+            img: "./Truck.png",
+        },
+        {
+            id: 4,
+            name: "Machinery",
+            description: "...",
+            selected: false,
+            img: "./Machinery.png",
+        },
+        {
+            id: 5,
+            name: "Personell",
+            description: "...",
+            selected: false,
+            img: "./Person.png",
         }
         //,
         // {
@@ -83,9 +92,7 @@ function HazardPage(props) {
   //const { values, handleChange } = props;
 
   return (
-    <div>
-      <h1>Hazards | Morearea</h1>
-      
+    <div>      
       <div className="hazard-page-container">
           
           {/* <div>
@@ -94,12 +101,36 @@ function HazardPage(props) {
             </DropdownButton>
         </div> */}
         <div>
-            <h3>Select Hazard | Tohua te morearea</h3>
+            <h1 className="pageTitle">Tukuake Nga Korero</h1>
+            <h1 className="pageTitle">Upload your site information</h1>
+            <div className="dropdown-buttons">
+            <DropdownButton id="dropdown-basic-button-mobileplant" title="Mobile Plant">
+                <Dropdown.Item href="#/action-1"><img className="dropdown-icon" alt="" src="./Truck.png"></img>Truck</Dropdown.Item>
+                <Dropdown.Item href="#/action-1"><img className="dropdown-icon" alt="" src="./Forklift.png"></img>Forklift</Dropdown.Item>
+            </DropdownButton>
+            <DropdownButton id="dropdown-basic-button-equipment" title="Equipment">
+                <Dropdown.Item href="#/action-1"><img className="dropdown-icon" alt="" src="./Machinery.png"></img>Machine Arm</Dropdown.Item>
+
+            </DropdownButton>
+            <DropdownButton id="dropdown-basic-button-personell" title="Personell">
+                <Dropdown.Item href="#/action-1"><img className="dropdown-icon" alt="" src="./Person.png"></img>Visitor</Dropdown.Item>
+            </DropdownButton>
+            <DropdownButton id="dropdown-basic-button-chemical" title="Chemical Hazards">
+                
+                <Dropdown.Item href="#/action-1"><img className="dropdown-icon" alt="" src="./Barrel.png"></img>Industrial Chemicals</Dropdown.Item>
+                
+            </DropdownButton>
+            <DropdownButton id="dropdown-basic-button-other" title="Other">
+                <Dropdown.Item href="#/action-1">Other</Dropdown.Item>
+            </DropdownButton>
+            </div>
+
             <HazardList hazards={hazards} clickHazard={clickHazard}/>
         </div>
 
         <div>
-            <h3>Your Hazards | Kōwhiri mōrearea</h3>
+            <h2 className="pageSubtitle">Your selections:</h2>
+            <p className="hazHelpText">Click "?" to learn more about a selected item</p>
             <HazardListSelected hazards={selHaz} clickHazardSelected={clickHazardSelected} />
         </div>
                 
@@ -107,7 +138,7 @@ function HazardPage(props) {
 
     
     <input type='button' className= 'buttonStyle' value="Back" onClick={back}/>
-    <input type='button' className= 'buttonStyle' value="Continue" onClick={continuee}/>
+    <input type='button' className= 'buttonStyle' value="Save & Continue" onClick={continuee}/>
     {/* <input type='button' value="Selected Hazards" onClick={() => props.showHaz(selHaz)}/> */}
     </div>
   );

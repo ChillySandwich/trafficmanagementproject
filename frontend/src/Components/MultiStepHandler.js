@@ -77,16 +77,25 @@ export class MultiStepHandler extends Component {
         const values = { email, industry, siteaddress, sqmSiteSize, warehouse, disclaimer, siteImageUplodaded, hazardSelect, hazardDropCompleted, selectedHaz }
         // Switch case for displaying each page, pass in current state of step as parameter to choose current case
         switch (step) {
-            // Login page
             case 1:
-                return (
-                    <Login
-                        nextStep={this.nextStep}
-                        handleChange={this.handleChange}
-                        values={values}
+                    return (
+                        <HazardPage
+                            nextStep={this.nextStep}
+                            prevStep={this.prevStep}
+                            handleChange={this.handleChange}
+                            values={values}
+                        />
+                    )
+            // Login page
+            // case 1:
+            //     return (
+            //         <Login
+            //             nextStep={this.nextStep}
+            //             handleChange={this.handleChange}
+            //             values={values}
  
-                    />
-                )
+            //         />
+            //     )
             case 2:
                 return (
                     <Disclaimer

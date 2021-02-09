@@ -63,12 +63,99 @@
   } */
 
   .hazard-page-container {
-    padding: 50px;
+    padding: 30px;
     display: grid;
-    grid-template-columns: 70% 30%;
-    
+    grid-template-columns: 50% 50%;
+    grid-row-gap: 50px;
+    grid-column-gap: 50px;
+    margin: 30px;
+  }
+
+  .dropdown-buttons {
+    display: grid;
+    row-gap: 1em;
+  }
+
+  .dropdown-icon {
+    width: 50px;
+    height: 50px;
+  }
+
+  .dropdown-menu {
+    width: 100% !important;
+    color: black;
+  }
+
+  #dropdown-basic-button-mobileplant {
+    text-transform: capitalize;
+    text-emphasis: none;
+    color: rgba(81, 78, 78, 1);
+    background: white;
+    border: none;
+    box-shadow: none;
+    width: 100%;
+    border-radius: 10px;
+  }
+
+
+  #dropdown-basic-button-equipment {
+    text-transform: capitalize;
+    text-emphasis: none;
+    color: rgba(81, 78, 78, 1);
+    background: white;
+    border: none;
+    box-shadow: none;
+    width: 100%;
+    border-radius: 10px;
+  }
+  #dropdown-basic-button-personell {
+    text-transform: capitalize;
+    text-emphasis: none;
+    color: rgba(81, 78, 78, 1);
+    background: white;
+    border: none;
+    box-shadow: none;
+    width: 100%;
+    border-radius: 10px;
+  }
+  #dropdown-basic-button-chemical {
+    text-transform: capitalize;
+    text-emphasis: none;
+    color: rgba(81, 78, 78, 1);
+    background: white;
+    border: none;
+    box-shadow: none;
+    width: 100%;
+    border-radius: 10px;
+  }
+  #dropdown-basic-button-other {
+    text-transform: capitalize;
+    text-emphasis: none;
+    color: rgba(81, 78, 78, 1);
+    background: white;
+    border: none;
+    box-shadow: none;
+    width: 100%;
+    border-radius: 10px;
+  }
+
+  #dropdown-basic-button:focus {
+    box-shadow: none;
+
+  }
+
+  Dropdown.Item {
+
+  }
+
+  
+
+  .hazardListSelected {
+    display: grid;
+    grid-template-columns: 50% 50%;
   }
   
+
   .hazard {
     
     border-radius: 25px;
@@ -85,8 +172,7 @@
   }
   
   .hazard img {
-    border-radius: 25px;
-    width: 70%;
+    width: 20%;
   }
 
   .addIcon {
@@ -109,21 +195,35 @@
   .buttonStyle{
     background-color: rgba(233, 180, 100, 1);
     color: rgba(81, 78, 78, 1); 
-    padding: 5px; 
+    padding-left: 20px;
+    padding-right: 20px;
     border-Radius: 10px;
-    font-Size: 30px;
-    font-weight: 300;
+    font-Size: 50px;
+    font-weight: 500;
     margin: 10px;
-    height: 100px;
-    width: 300px;
+    height: 80px;
     border:none;
   }
 
-  h1{
-  color: black;
-  font-weight: bold;
+  .hazHelpText {
+    color: white;
   }
 
+  h1 {
+    color: white;
+    font-weight: bolder;
+    text-align: left;
+  }
+
+  h2 {
+    color: white;
+    font-weight: bold;
+  }
+
+  h3 {
+    color: rgba(81, 78, 78, 1);
+    font-weight: bold;
+  }
   
 
   .disclaimerParagraph{
