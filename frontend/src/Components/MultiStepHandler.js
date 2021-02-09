@@ -11,6 +11,9 @@ import './App.css';
 import './FileUploadFinal/Imageloader.css';
 import SiteDrawingLayout from './SiteInflowOutflow/SiteDrawingLayout';
 import PDF from './PDFDownloadPage/pdf';
+import DrawContainer from './SiteInflowOutflow/DrawContainer';
+import TestTest from './SiteInflowOutflow/TestTest';
+import JoniApp from './JoniTest/JoniApp';
 
 export class MultiStepHandler extends Component {
     // Put some empty fields in here to hold data when it needs to be changed e.g. industry: ''. will need to do this for anything we want in the final 'pdf' 
@@ -18,6 +21,7 @@ export class MultiStepHandler extends Component {
 
     constructor(props) {
         super(props);
+        
         this.state = {
             step: 1,
             checkBox: false,
@@ -31,6 +35,7 @@ export class MultiStepHandler extends Component {
             disclaimer: false,
             siteImageUplodaded: false,
             hazardDropCompleted: false,
+            logo: Logo
         }
     }
     //put step value forward once, for submit buttons
@@ -50,6 +55,11 @@ export class MultiStepHandler extends Component {
     handleChange = input => e => {
         this.setState({ [input]: e.target.value })
     }
+    setImg = (passedImg) => {
+        this.setState({
+            img: passedImg
+        })
+    }
     render() {
 
         const { step } = this.state;
@@ -58,23 +68,55 @@ export class MultiStepHandler extends Component {
         // Switch case for displaying each page, pass in current state of step as parameter to choose current case
         switch (step) {
             //Login page
+            
             case 1:
                 return (
-                    <Login
-                        nextStep={this.nextStep}
-                        handleChange={this.handleChange}
-                        values={values}
-
-                    />
-                )
-            case 2:
-                return (
-                    <Disclaimer
+                    <DrawContainer
                         nextStep={this.nextStep}
                         prevStep={this.prevStep}
                         handleChange={this.handleChange}
                         values={values}
+                        passedImage = {this.state.logo}
+                        setImg = {this.setImg}
+                    />
+                )
+            // case 2:
+            //     return (
+            //         <TestTest
+            //             nextStep={this.nextStep}
+            //             prevStep={this.prevStep}
+            //             handleChange={this.handleChange}
+            //             values={values}
+            //             img = {this.state.img}
+            //         />
+            //     )
+            // case 1:
+            //     return (
+            //         <Login
+            //             nextStep={this.nextStep}
+            //             handleChange={this.handleChange}
+            //             values={values}
 
+            //         />
+            //     )
+            // case 2:
+            //     return (
+            //         <Disclaimer
+            //             nextStep={this.nextStep}
+            //             prevStep={this.prevStep}
+            //             handleChange={this.handleChange}
+            //             values={values}
+
+            //         />
+            //     )
+
+            case 2:
+                return (
+                    <HazardPage
+                        nextStep={this.nextStep}
+                        prevStep={this.prevStep}
+                        handleChange={this.handleChange}
+                        values={values}
                     />
                 )
 
