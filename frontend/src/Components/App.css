@@ -198,10 +198,11 @@
     padding-left: 20px;
     padding-right: 20px;
     border-Radius: 10px;
-    font-Size: 50px;
-    font-weight: 500;
+    font-Size: 25px;
+    font-weight: 300;
     margin: 10px;
     height: 80px;
+    width: 250px;
     border:none;
   }
 

@@ -3,519 +3,978 @@ import { Stage, Layer, Rect, Text, Ellipse, Image, Transformer } from "react-kon
 import Konva from "konva";
 import useImage from 'use-image';
 import { v4 as uuidv4 } from 'uuid';
-import { FaImage } from "react-icons/fa";
 
-const STANDARD_RECTANGLE_DRAG = (
-  e, idx, rectanglePosition,
-  setRectanglePosition,
+class URLImage extends React.Component {
+  state = {
+    image: null
+  };
+  componentDidMount() {
+    this.loadImage();
+  }
+  componentDidUpdate(oldProps) {
+    if (oldProps.src !== this.props.src) {
+      this.loadImage();
+    }
+  }
+  componentWillUnmount() {
+    this.image.removeEventListener('load', this.handleLoad);
+  }
+  loadImage() {
+    // save to "this" to remove "load" handler on unmount
+    this.image = new window.Image();
+    this.image.src = 'images/SitePlan.jpg';
+    this.image.addEventListener('load', this.handleLoad);
+  }
+  handleLoad = () => {
+    // after setState react-konva will update canvas and redraw the layer
+    // because "image" property is changed
+    this.setState({
+      image: this.image
+    });
+    // if you keep same image object during source updates
+    // you will have to update layer manually:
+    // this.imageNode.getLayer().batchDraw();
+  };
+  render() {
+    return (
+      <Image
+        x={this.props.x}
+        y={this.props.y}
+        width={this.props.width}
+        height={this.props.height}
+        image={this.state.image}
+        ref={node => {
+          this.imageNode = node;
+        }}
+        onClick={this.props.onClick}
+      />
+    );
+  }
+}
+
+
+const STANDARD_FORKLIFT_DRAG = (
+  e, idx, ImagePosition, setImagePosition,
   userHazards, setUserHazards, draggableRef) => {
 
-  setRectanglePosition({
-    x: e.target._lastPos.x,
-    y: e.target._lastPos.y,
-  })
-  // puts rectangle back to original position (on top of static rectangle)
-  var rect = draggableRef.current;
-  rect.position({
+  setImagePosition({
     x: e.target._lastPos.x,
     y: e.target._lastPos.y,
   });
 
-  // Update the position of the rectangle in question
-  console.log(idx);
+  var imag = draggableRef.current;
+  imag.position({
+    x: e.target._lastPos.x,
+    y: e.target._lastPos.y,
+  });
 
   let userHazardsUpdate = {
     ...userHazards,
-    rectangles: userHazards.rectangles.map((eachRect, currentIdx) => {
+    forklifts: userHazards.forklifts.map((eachImage, currentIdx) => {
       if (currentIdx !== idx) {
-        return eachRect;
+        return eachImage;
       }
       return {
         x: e.target._lastPos.x,
         y: e.target._lastPos.y,
-        strokewidth: 0.5,
-        stroke: "black",
-        width: 25,
-        height: 25,
-        fill: "black",
-        idx: idx
+        width: 35,
+        height: 35,
+        idx: uuidv4()
       }
     })
   }
-
   setUserHazards(userHazardsUpdate);
 }
 
-const STANDARD_RECTANGLE_DELETE = (
-  e, idx, eachRect, userHazards, setUserHazards) => {
-  console.log(idx);
-
-  console.log("This works");
-
-  // update the user hazards
-  let userHazardsUpdate = {
-    ...userHazards,
-
-    // loop through all the rectangles
-    rectangles: userHazards.rectangles.filter(rectangle => {
-      console.log("The rectangle:");
-      console.log(rectangle);
-      console.log("The idx:");
-      console.log(idx);
-    // if the rectangle ID is not equal to the idx which was clicked, return
-      return rectangle.idx !== idx;
-    })
-  }
-  setUserHazards(userHazardsUpdate);
-}
-
-// const STANDARD_SELECT_RECTANGLE = (
-//   e, eachRect.idx, eachRect, userHazards, setUserHazards) =>{
-
-//     let userHazardsUpdate = {
-//       ...userHazards,
-//       rectangles: userHazards
-//     }
-
-// }
-
-
-const TOOLBAR_RECTANGLE_DRAG = (
-  e, idx, rectanglePosition,
-  setRectanglePosition,
+const TOOLBAR_FORKLIFT_DRAG = (
+  e, idx, imagePosition, setImagePosition,
   userHazards, setUserHazards, draggableRef) => {
 
-  setRectanglePosition({
-    x: rectanglePosition.x,
-    y: rectanglePosition.y
-  })
-  // puts rectangle back to original position (on top of static rectangle)
-  var rect = draggableRef.current;
-  rect.position({
-    x: rectanglePosition.x,
-    y: rectanglePosition.y
+  setImagePosition({
+    x: imagePosition.x,
+    y: imagePosition.y
   });
 
-  //creates a new rectangle, using the last coordinates of where the mouse was let go
-  let newRect = {
+  var imag = draggableRef.current;
+  imag.position({
+    x: imagePosition.x,
+    y: imagePosition.y
+  });
+
+  let newImag = {
     x: e.target._lastPos.x,
     y: e.target._lastPos.y,
-    strokewidth: 0.5,
-    stroke: "black",
-    width: 25,
-    height: 25,
-    fill: "black",
+    width: 35,
+    height: 35,
     idx: uuidv4()
   }
 
   let userHazardsUpdate = {
     ...userHazards,
-    rectangles: [...userHazards.rectangles, newRect]
+    forklifts: [...userHazards.forklifts, newImag]
   }
 
-  console.log(userHazardsUpdate);
   setUserHazards(userHazardsUpdate);
-} 
+}
 
+const STANDARD_TRUCK_DRAG = (
+  e, idx, ImagePosition, setImagePosition,
+  userHazards, setUserHazards, draggableRef) => {
 
-const STANDARD_ELLIPSE_DELETE = (e, idx, eachEllips, userHazards, setUserHazards) => {
-  console.log(idx);
+  setImagePosition({
+    x: e.target._lastPos.x,
+    y: e.target._lastPos.y,
+  });
+
+  var imag = draggableRef.current;
+  imag.position({
+    x: e.target._lastPos.x,
+    y: e.target._lastPos.y,
+  });
 
   let userHazardsUpdate = {
     ...userHazards,
-    ellipses: userHazards.ellipses.filter(ellipses => {
-      console.log(ellipses);
-      console.log(idx);
-      return ellipses.idx !== idx;
+    trucks: userHazards.trucks.map((eachImage, currentIdx) => {
+      if (currentIdx !== idx) {
+        return eachImage;
+      }
+      return {
+        x: e.target._lastPos.x,
+        y: e.target._lastPos.y,
+        width: 35,
+        height: 35,
+        idx: uuidv4()
+      }
     })
   }
   setUserHazards(userHazardsUpdate);
 }
 
-const STANDARD_ELLIPSE_DRAG = (
-  e, idx, ellipsePosition, setEllipsePosition, 
-  userHazards, setUserHazards, draggableRef) => {
-    
-    setEllipsePosition({
-      x: e.target._lastPos.x,
-      y: e.target._lastPos.y,
-    });
-
-    var ellips = draggableRef.current;
-    ellips.position({
-      x: e.target._lastPos.x,
-      y: e.target._lastPos.y,
-    });
-
-    let userHazardsUpdate = {
-      ...userHazards,
-      ellipses: userHazards.ellipses.map((eachEllips, currentIdx) => {
-        if (currentIdx !== idx) {
-          return eachEllips;
-        }
-        return {
-          x: e.target._lastPos.x,
-          y: e.target._lastPos.y,
-          radiusX: 12.5,
-          radiusY: 12.5,
-          stroke: "black",
-          strokeWidth: 0.5,
-          idx: idx
-        }
-      })
-    }
-  
-    setUserHazards(userHazardsUpdate);
-}
-
-const TOOLBAR_ELLIPSE_DRAG = (
-  e, idx, ellipsePosition, setEllipsePosition, 
+const TOOLBAR_TRUCK_DRAG = (
+  e, idx, imagePosition, setImagePosition,
   userHazards, setUserHazards, draggableRef) => {
 
-    setEllipsePosition({
-      x: ellipsePosition.x,
-      y: ellipsePosition.y
-    });
+  setImagePosition({
+    x: imagePosition.x,
+    y: imagePosition.y
+  });
 
-    var ellips = draggableRef.current;
-    ellips.position({
-      x: ellipsePosition.x,
-      y: ellipsePosition.y
-    });
+  var imag = draggableRef.current;
+  imag.position({
+    x: imagePosition.x,
+    y: imagePosition.y
+  });
 
-    let newEllips = {
-      x: e.target._lastPos.x,
-      y: e.target._lastPos.y,
-      radiusX: 12.5,
-      radiusY: 12.5,
-      stroke: "black",
-      strokeWidth: 0.5,
-      idx: uuidv4()
-    }
+  let newImag = {
+    x: e.target._lastPos.x,
+    y: e.target._lastPos.y,
+    width: 35,
+    height: 35,
+    idx: uuidv4()
+  }
 
-    let userHazardsUpdate = {
-      ...userHazards,
-      ellipses: [...userHazards.ellipses, newEllips]
-    }
+  let userHazardsUpdate = {
+    ...userHazards,
+    trucks: [...userHazards.trucks, newImag]
+  }
 
-    setUserHazards(userHazardsUpdate);
+  setUserHazards(userHazardsUpdate);
 }
 
-const TOOLBAR_IMAGE_DRAG = (
-  e, idx, imagePosition, setImagePosition, 
+
+// const STANDARD_RECTANGLE_DELETE = (
+//   e, idx, eachRect, userHazards, setUserHazards) => {
+//   console.log('Delete idx: ', idx);
+
+//   // update the user hazards
+//   let userHazardsUpdate = {
+//     ...userHazards,
+
+//     // loop through all the rectangles
+//     rectangles: userHazards.rectangles.filter(rectangle => {
+//       // if the rectangle ID is not equal to the idx which was clicked, return
+//       return rectangle.idx !== idx;
+//     })
+//   }
+
+//   console.log('Pre-delete update: ', userHazardsUpdate)
+//   setUserHazards(userHazardsUpdate);
+// }
+
+const STANDARD_CONE_DRAG = (
+  e, idx, ImagePosition, setImagePosition,
   userHazards, setUserHazards, draggableRef) => {
 
-    setImagePosition({
-      x: imagePosition.x,
-      y: imagePosition.y
-    });
+  setImagePosition({
+    x: e.target._lastPos.x,
+    y: e.target._lastPos.y,
+  });
 
-    var imag = draggableRef.current;
-    imag.position({
-      x: imagePosition.x,
-      y: imagePosition.y
-    });
+  var imag = draggableRef.current;
+  imag.position({
+    x: e.target._lastPos.x,
+    y: e.target._lastPos.y,
+  });
 
-    let newImag = {
-      x: e.target._lastPos.x,
-      y: e.target._lastPos.y,
-      width:35,
-      height:35,
-      idx: uuidv4()
-    }
-
-    let userHazardsUpdate = {
-      ...userHazards,
-      images: [...userHazards.images, newImag]
-    }
-
-    setUserHazards(userHazardsUpdate);
-}
-
-const STANDARD_IMAGE_DRAG = (
-  e, idx, ImagePosition, setImagePosition, 
-  userHazards, setUserHazards, draggableRef) => {
-    
-    setImagePosition({
-      x: e.target._lastPos.x,
-      y: e.target._lastPos.y,
-    });
-
-    var imag = draggableRef.current;
-    imag.position({
-      x: e.target._lastPos.x,
-      y: e.target._lastPos.y,
-    });
-
-    let userHazardsUpdate = {
-      ...userHazards,
-      images: userHazards.images.map((eachImage, currentIdx) => {
-        if (currentIdx !== idx) {
-          return eachImage;
-        }
-        return {
-          x: e.target._lastPos.x,
-          y: e.target._lastPos.y,
-          width:35,
-          height:35,
-          idx: uuidv4()
-        }
-      })
-    }
-  
-    setUserHazards(userHazardsUpdate);
-}
-
-const STANDARD_IMAGE_DELETE = (e, idx, eachImg, userHazards, setUserHazards) => {
-    console.log(idx);
-  
-    let userHazardsUpdate = {
-      ...userHazards,
-      images: userHazards.images.filter(images => {
-        return images.idx !== idx;
-      })
-    }
-    setUserHazards(userHazardsUpdate);
-  }
-
-
-  //creating a functional component here of the Draggable Rectangle
-  const DraggableReferenceRectangle = (props) => {
-    // ---------------------------------------  // setting the original state of the rectangle position
-
-    const [rectanglePosition, setRectanglePosition] = useState(props.initialPosition)
-
-    const draggableRef = useRef(null);
-    const transformRef = useRef(null);
-
-    // React.useEffect(() => {
-    //   if (isSelected){
-    //     transformRef.current.nodes([shapeRef.current])
-    //     transformRef.current.getLayer().batchdraw();
-    //   }
-
-    // }, [isSelected]);
-
-    return (
-      <>
-        {/* rectangle which is going to be dragged */}
-        <Rect
-          ref={draggableRef}
-          x={rectanglePosition.x}
-          y={rectanglePosition.y}
-          width={25}
-          height={25}
-          stroke="black"
-          strokeWidth={0.5}
-          draggable
-          onClick={props.onClick}
-          onSelect={props.onSelect}
-          onChange={props.onChange}
-          onDragEnd={(e) => { props.onDragEnd(e, props.idx, rectanglePosition, setRectanglePosition, props.userHazards, props.setUserHazards, draggableRef) }}
-          onTransformEnd={(e) => { }}
-        />
-      </>
-    )
-  }
-
-  const DraggableReferenceImage = (props) => {
-    const [img] = useImage("https://www.tinyurl.com/1mcn26eq");
-    const draggableRef = useRef(null);
-    const [imagePosition, setImagePosition] = useState(props.initialPosition)
-
-    return(
-      <Image
-      image={img}
-      ref={draggableRef}
-      x={imagePosition.x}
-      y={imagePosition.y}
-      width={35}
-      height={35}
-      draggable
-      onClick={props.onClick}
-      onDragEnd={(e) => { props.onDragEnd(e, props.idx, imagePosition, setImagePosition, props.userHazards, props.setUserHazards, draggableRef) }}
-      />
-    )
-
-  }
-
-  const DraggableReferenceEllipse = (props) => {
-
-    const [ellipsePosition, setEllipsePosition] = useState(props.initialPosition)
-
-    const draggableRef = useRef(null);
-
-    return (
-      <>
-        <Ellipse
-          ref={draggableRef}
-          x={ellipsePosition.x}
-          y={ellipsePosition.y}
-          radiusX={12.5}
-          radiusY={12.5}
-          stroke="black"
-          strokeWidth={0.5}
-          draggable
-          onClick={props.onClick}
-          onDragEnd={(e) => { props.onDragEnd(e, props.idx, ellipsePosition, setEllipsePosition, props.userHazards, props.setUserHazards, draggableRef) }}
-        />
-      </>
-    )
-  }
-
-
-  const ToolBar = (props) => {
-    // ---------------------------------------//creating a functional component of the Draggable Toolbar
-    const [toolbarAttributes, setToolbarAttributes] = useState(null);
-
-    const toolbarRef = useCallback(node => {
-      if (node !== null) {
-        setToolbarAttributes(node.attrs);
+  let userHazardsUpdate = {
+    ...userHazards,
+    cones: userHazards.cones.map((eachImage, currentIdx) => {
+      if (currentIdx !== idx) {
+        return eachImage;
       }
-    }, []);
+      return {
+        x: e.target._lastPos.x,
+        y: e.target._lastPos.y,
+        width: 35,
+        height: 35,
+        idx: uuidv4()
+      }
+    })
+  }
 
-    return (
-      <Layer draggable height={window.innerHeight} width={window.innerwidth}>
-        <Rect
-          ref={toolbarRef}
-          x={10}
-          y={window.innerHeight / 2 - 200 / 2}
-          width={50}
-          height={400}
-          stroke="black"
-          strokeWidth={1.5}
-          fill="white"
-        />
+  setUserHazards(userHazardsUpdate);
+}
 
-        {/* create base rectangle */}
-        <Rect
-          x={22.5}
-          y={window.innerHeight / 2 - 50}
-          width={25}
-          height={25}
-          stroke="black"
-          strokeWidth={0.5}
+const TOOLBAR_CONE_DRAG = (
+  e, idx, imagePosition, setImagePosition,
+  userHazards, setUserHazards, draggableRef) => {
 
-        />
-        <DraggableReferenceRectangle
-          key={`TOOLBAR_RECT`}
-          idx={0}
-          setUserHazards={props.setUserHazards}
-          userHazards={props.userHazards}
-          onDragEnd={TOOLBAR_RECTANGLE_DRAG}
-          initialPosition={{ x: 22.5, y: (!props.toolbarAttributes) ? (window.innerHeight / 2 - 50) : props.toolbarAttributes.y + 50 }}
-        />
-        {/* create base ellipse */}
-        <Ellipse
-          x={35}
-          y={window.innerHeight / 2}
-          radiusX={12.5}
-          radiusY={12.5}
-          stroke="black"
-          strokeWidth={0.5}
-        />
+  setImagePosition({
+    x: imagePosition.x,
+    y: imagePosition.y
+  });
 
-        <DraggableReferenceEllipse
-          key={`TOOLBAR_ELLIP`}
-          x={35}
-          y={window.innerHeight / 2}
-          radiusX={12.5}
-          radiusY={12.5}
-          setUserHazards={props.setUserHazards}
-          userHazards={props.userHazards}
-          stroke="black"
-          strokeWidth={0.5}
-          onDragEnd={TOOLBAR_ELLIPSE_DRAG}
-          initialPosition={{ x: 35, y: (!props.toolbarAttributes) ? (window.innerHeight / 2) : props.toolbarAttributes.y }}
-        />
+  var imag = draggableRef.current;
+  imag.position({
+    x: imagePosition.x,
+    y: imagePosition.y
+  });
 
-        <Image
-        x={18}
-        y={window.innerHeight/ 2 + 30}s
-        width={35}
+  let newImag = {
+    x: e.target._lastPos.x,
+    y: e.target._lastPos.y,
+    width: 35,
+    height: 35,
+    idx: uuidv4()
+  }
+
+  let userHazardsUpdate = {
+    ...userHazards,
+    cones: [...userHazards.cones, newImag]
+  }
+
+  setUserHazards(userHazardsUpdate);
+}
+
+const STANDARD_ROBOTARM_DRAG = (
+  e, idx, ImagePosition, setImagePosition,
+  userHazards, setUserHazards, draggableRef) => {
+
+  setImagePosition({
+    x: e.target._lastPos.x,
+    y: e.target._lastPos.y,
+  });
+
+  var imag = draggableRef.current;
+  imag.position({
+    x: e.target._lastPos.x,
+    y: e.target._lastPos.y,
+  });
+
+  let userHazardsUpdate = {
+    ...userHazards,
+    images: userHazards.robotarms.map((eachImage, currentIdx) => {
+      if (currentIdx !== idx) {
+        return eachImage;
+      }
+      return {
+        x: e.target._lastPos.x,
+        y: e.target._lastPos.y,
+        width: 35,
+        height: 35,
+        idx: uuidv4()
+      }
+    })
+  }
+}
+
+const TOOLBAR_ROBOTARM_DRAG = (
+  e, idx, imagePosition, setImagePosition,
+  userHazards, setUserHazards, draggableRef) => {
+
+  setImagePosition({
+    x: imagePosition.x,
+    y: imagePosition.y
+  });
+
+  var imag = draggableRef.current;
+  imag.position({
+    x: imagePosition.x,
+    y: imagePosition.y
+  });
+
+  let newImag = {
+    x: e.target._lastPos.x,
+    y: e.target._lastPos.y,
+    width: 35,
+    height: 35,
+    idx: uuidv4()
+  }
+
+  let userHazardsUpdate = {
+    ...userHazards,
+    robotarms: [...userHazards.robotarms, newImag]
+  }
+
+  setUserHazards(userHazardsUpdate);
+}
+
+const TOOLBAR_CHEMICALBARREL_DRAG = (
+  e, idx, imagePosition, setImagePosition,
+  userHazards, setUserHazards, draggableRef) => {
+
+  setImagePosition({
+    x: imagePosition.x,
+    y: imagePosition.y
+  });
+
+  var imag = draggableRef.current;
+  imag.position({
+    x: imagePosition.x,
+    y: imagePosition.y
+  });
+
+  let newImag = {
+    x: e.target._lastPos.x,
+    y: e.target._lastPos.y,
+    width: 35,
+    height: 35,
+    idx: uuidv4()
+  }
+
+  let userHazardsUpdate = {
+    ...userHazards,
+    chemicalBarrels: [...userHazards.chemicalBarrels, newImag]
+  }
+
+  setUserHazards(userHazardsUpdate);
+}
+
+const STANDARD_CHEMICALBARREL_DRAG = (
+  e, idx, ImagePosition, setImagePosition,
+  userHazards, setUserHazards, draggableRef) => {
+
+  setImagePosition({
+    x: e.target._lastPos.x,
+    y: e.target._lastPos.y,
+  });
+
+  var imag = draggableRef.current;
+  imag.position({
+    x: e.target._lastPos.x,
+    y: e.target._lastPos.y,
+  });
+
+  let userHazardsUpdate = {
+    ...userHazards,
+    images: userHazards.chemicalBarrels.map((eachImage, currentIdx) => {
+      if (currentIdx !== idx) {
+        return eachImage;
+      }
+      return {
+        x: e.target._lastPos.x,
+        y: e.target._lastPos.y,
+        width: 35,
+        height: 35,
+        idx: uuidv4()
+      }
+    })
+  }
+}
+
+// const STANDARD_IMAGE_DELETE = (e, idx, eachImg, userHazards, setUserHazards) => {
+//   console.log(idx);
+
+//   let userHazardsUpdate = {
+//     ...userHazards,
+//     images: userHazards.images.filter(images => {
+//       return images.idx !== idx;
+//     })
+//   }
+//   setUserHazards(userHazardsUpdate);
+// }
+
+
+//creating a functional component here of the Draggable Rectangle
+
+const DraggableReferenceForklift = (props) => {
+
+  const [img] = useImage('https://www.tinyurl.com/9kv7w4bn');
+
+  const [imagePosition, setImagePosition] = useState(props.initialPosition);
+  const draggableRef = useRef(null);
+  const transformRef = useRef();
+
+  useEffect(() => {
+    if (props.isSelected) {
+      // -------------------------------
+      transformRef.current.nodes([draggableRef.current]);
+      console.log(transformRef.current.getLayer());
+      transformRef.current.getLayer().batchDraw();
+    }
+
+  }, [props.isSelected]);
+
+
+  return (
+    <>
+      <Image
+        onClick={props.onSelect}
+        onTap={props.onSelect}
+        ref={draggableRef}
+        {...props.shapeProps}
+        image={img}
+        ref={draggableRef}
+        x={imagePosition.x}
+        y={imagePosition.y}
+        width={30}
+        height={30}
+        draggable
+        onDragEnd={(e) => { props.onDragEnd(e, props.idx, imagePosition, setImagePosition, props.userHazards, props.setUserHazards, draggableRef) }}
+      />
+      {props.isSelected && (
+        <Transformer
+          ref={transformRef}
+          boundBoxFunc={(oldBox, newBox) => {
+            // limit resize
+            if (newBox.width < 5 || newBox.height < 5) {
+              return oldBox;
+            }
+            return newBox;
+          }}
+        />
+      )
+      }
+    </>
+  )
+}
+
+const DraggableReferenceTruck = (props) => {
+
+  const [img] = useImage('https://www.tinyurl.com/xldyo2za ');
+
+  const [imagePosition, setImagePosition] = useState(props.initialPosition);
+  const draggableRef = useRef(null);
+  const transformRef = useRef();
+
+  useEffect(() => {
+    if (props.isSelected) {
+      // -------------------------------
+      transformRef.current.nodes([draggableRef.current]);
+      console.log(transformRef.current.getLayer());
+      transformRef.current.getLayer().batchDraw();
+    }
+
+  }, [props.isSelected]);
+
+
+  return (
+    <>
+      <Image
+        onClick={props.onSelect}
+        onTap={props.onSelect}
+        ref={draggableRef}
+        {...props.shapeProps}
+        image={img}
+        ref={draggableRef}
+        x={imagePosition.x}
+        y={imagePosition.y}
+        width={30}
         height={35}
+        draggable
+        onDragEnd={(e) => { props.onDragEnd(e, props.idx, imagePosition, setImagePosition, props.userHazards, props.setUserHazards, draggableRef) }}
+      />
+      {props.isSelected && (
+        <Transformer
+          ref={transformRef}
+          boundBoxFunc={(oldBox, newBox) => {
+            // limit resize
+            if (newBox.width < 5 || newBox.height < 5) {
+              return oldBox;
+            }
+            return newBox;
+          }}
         />
+      )
+      }
+    </>
+  )
+}
 
-      <DraggableReferenceImage
-        key={`TOOLBAR_IMAGE`}
+const DraggableReferenceCone = (props) => {
+
+
+  const [img] = useImage('https://www.tinyurl.com/57vtztcm');
+
+  const [imagePosition, setImagePosition] = useState(props.initialPosition);
+  const draggableRef = useRef(null);
+  const transformRef = useRef();
+
+  useEffect(() => {
+    if (props.isSelected) {
+      // -------------------------------
+      transformRef.current.nodes([draggableRef.current]);
+      console.log(transformRef.current.getLayer());
+      transformRef.current.getLayer().batchDraw();
+    }
+
+  }, [props.isSelected]);
+
+
+  return (
+    <>
+      <Image
+        onClick={props.onSelect}
+        onTap={props.onSelect}
+        ref={draggableRef}
+        {...props.shapeProps}
+        image={img}
+        ref={draggableRef}
+        x={imagePosition.x}
+        y={imagePosition.y}
+        width={30}
+        height={35}
+        draggable
+        onDragEnd={(e) => { props.onDragEnd(e, props.idx, imagePosition, setImagePosition, props.userHazards, props.setUserHazards, draggableRef) }}
+      />
+      {props.isSelected && (
+        <Transformer
+          ref={transformRef}
+          boundBoxFunc={(oldBox, newBox) => {
+            // limit resize
+            if (newBox.width < 5 || newBox.height < 5) {
+              return oldBox;
+            }
+            return newBox;
+          }}
+        />
+      )
+      }
+    </>
+  )
+}
+
+const DraggableReferenceRobotArm = (props) => {
+
+
+  const [img] = useImage('https://www.tinyurl.com/3bw6m6ow');
+
+  const [imagePosition, setImagePosition] = useState(props.initialPosition);
+  const draggableRef = useRef(null);
+  const transformRef = useRef();
+
+  useEffect(() => {
+    if (props.isSelected) {
+      // -------------------------------
+      transformRef.current.nodes([draggableRef.current]);
+      console.log(transformRef.current.getLayer());
+      transformRef.current.getLayer().batchDraw();
+    }
+
+  }, [props.isSelected]);
+
+  return (
+    <>
+      <Image
+        onClick={props.onSelect}
+        onTap={props.onSelect}
+        ref={draggableRef}
+        {...props.shapeProps}
+        image={img}
+        ref={draggableRef}
+        x={imagePosition.x}
+        y={imagePosition.y}
+        width={30}
+        height={35}
+        draggable
+        onDragEnd={(e) => { props.onDragEnd(e, props.idx, imagePosition, setImagePosition, props.userHazards, props.setUserHazards, draggableRef) }}
+      />
+      {props.isSelected && (
+        <Transformer
+          ref={transformRef}
+          boundBoxFunc={(oldBox, newBox) => {
+            // limit resize
+            if (newBox.width < 5 || newBox.height < 5) {
+              return oldBox;
+            }
+            return newBox;
+          }}
+        />
+      )
+      }
+    </>
+  )
+}
+
+const DraggableReferenceChemicalBarrel = (props) => {
+
+  const [img] = useImage('https://www.tinyurl.com/1kcyzbvw ');
+
+  const [imagePosition, setImagePosition] = useState(props.initialPosition);
+  const draggableRef = useRef(null);
+  const transformRef = useRef();
+
+  useEffect(() => {
+    if (props.isSelected) {
+      // -------------------------------
+      transformRef.current.nodes([draggableRef.current]);
+      console.log(transformRef.current.getLayer());
+      transformRef.current.getLayer().batchDraw();
+    }
+
+  }, [props.isSelected]);
+
+  return (
+    <>
+      <Image
+        onClick={props.onSelect}
+        onTap={props.onSelect}
+        ref={draggableRef}
+        {...props.shapeProps}
+        image={img}
+        ref={draggableRef}
+        x={imagePosition.x}
+        y={imagePosition.y}
+        width={25}
+        height={40}
+        draggable
+        onDragEnd={(e) => { props.onDragEnd(e, props.idx, imagePosition, setImagePosition, props.userHazards, props.setUserHazards, draggableRef) }}
+      />
+      {props.isSelected && (
+        <Transformer
+          ref={transformRef}
+          boundBoxFunc={(oldBox, newBox) => {
+            // limit resize
+            if (newBox.width < 5 || newBox.height < 5) {
+              return oldBox;
+            }
+            return newBox;
+          }}
+        />
+      )
+      }
+    </>
+  )
+}
+
+
+const ToolBar = (props) => {
+  // ---------------------------------------//creating a functional component of the Draggable Toolbar
+  const [toolbarAttributes, setToolbarAttributes] = useState(null);
+
+  const toolbarRef = useCallback(node => {
+    if (node !== null) {
+      setToolbarAttributes(node.attrs);
+    }
+  }, []);
+
+  return (
+    <Layer height={window.innerHeight} width={window.innerwidth}>
+      <Rect
+        ref={toolbarRef}
+        x={750}
+        y={65}
+        width={50}
+        height={50}
+        fill="white"
+        cornerRadius={[10, 10, 10, 10]}
+      />
+
+<Rect
+        ref={toolbarRef}
+        x={750}
+        y={125}
+        width={50}
+        height={50}
+        fill="white"
+        cornerRadius={[10, 10, 10, 10]}
+      />
+
+<Rect
+        ref={toolbarRef}
+        x={750}
+        y={185}
+        width={50}
+        height={50}
+        fill="white"
+        cornerRadius={[10, 10, 10, 10]}
+      />
+
+<Rect
+        ref={toolbarRef}
+        x={750}
+        y={250}
+        width={50}
+        height={50}
+        fill="white"
+        cornerRadius={[10, 10, 10, 10]}
+      />
+
+
+<Rect
+        ref={toolbarRef}
+        x={750}
+        y={310}
+        width={50}
+        height={50}
+        fill="white"
+        cornerRadius={[10, 10, 10, 10]}
+      />
+
+
+      <DraggableReferenceForklift
+        draggable
+        key={`TOOLBAR_FORKLIFT`}
         x={18}
-        y={window.innerHeight/ 2 + 30}
+        y={window.innerHeight / 2 + 30}
+        width={35}
+        height={30}
+        setUserHazards={props.setUserHazards}
+        userHazards={props.userHazards}
+        onDragEnd={TOOLBAR_FORKLIFT_DRAG}
+        initialPosition={{ x: 760, y: 75}}
+      />
+
+      <DraggableReferenceTruck
+        draggable
+        key={`TOOLBAR_TRUCK`}
+        x={18}
+        y={window.innerHeight / 2 + 30}
         width={35}
         height={35}
         setUserHazards={props.setUserHazards}
         userHazards={props.userHazards}
-        onDragEnd={TOOLBAR_IMAGE_DRAG}
-        initialPosition={{ x: 18 , y: (!props.toolbarAttributes) ? (window.innerHeight / 2 + 30) : props.toolbarAttributes.y -30 }}
-      />  
+        onDragEnd={TOOLBAR_TRUCK_DRAG}
+        initialPosition={{ x: 760, y: 130 }}
+      />
 
+      <DraggableReferenceCone
+        draggable
+        key={`TOOLBAR_CONE`}
+        x={18}
+        y={window.innerHeight / 2 + 30}
+        width={35}
+        height={35}
+        setUserHazards={props.setUserHazards}
+        userHazards={props.userHazards}
+        onDragEnd={TOOLBAR_CONE_DRAG}
+        initialPosition={{ x: 760, y: 190 }}
+      />
+
+      <DraggableReferenceRobotArm
+        draggable
+        key={`TOOLBAR_ROBOTARM`}
+        x={18}
+        y={window.innerHeight / 2 + 30}
+        width={35}
+        height={35}
+        setUserHazards={props.setUserHazards}
+        userHazards={props.userHazards}
+        onDragEnd={TOOLBAR_ROBOTARM_DRAG}
+        initialPosition={{ x: 760, y: 255}}
+      />
+
+
+      <DraggableReferenceChemicalBarrel
+        draggable
+        key={`TOOLBAR_CHEMICALBARREL`}
+        x={18}
+        y={window.innerHeight / 2 + 30}
+        width={25}
+        height={40}
+        setUserHazards={props.setUserHazards}
+        userHazards={props.userHazards}
+        onDragEnd={TOOLBAR_CHEMICALBARREL_DRAG}
+        initialPosition={{ x: 762, y: 315}}
+      />
+
+    </Layer>
+  )
+}
+
+const Canvas = () => {
+
+  const [userHazards, setUserHazards] = useState({
+    rectangles: [], ellipses: [], cones: [], robotarms: [], chemicalBarrels: [], trucks: [],
+    forklifts: [],
+  });
+  const [selectedId, selectShape] = useState(null);
+  const [cross] = useImage("https://i.dlpng.com/static/png/6502802_preview.png");
+  const [crossPosition, setCrossPosition] = useState()
+
+  const siteRef = useRef();
+
+  const checkDeselect = (e) => {
+    // deselect when clicked on empty area
+    const clickedOnStage = e.target === e.target.getStage();
+    if (clickedOnStage) {
+      selectShape(null);
+      console.log(selectShape);
+    }
+  };
+
+  console.log(`SELECTED SHAPE: ${selectedId}`)
+
+  return (
+    //creates background stage (like canvas)
+    <Stage
+      width={850}
+      height={600}
+      onMouseDown={checkDeselect}
+      onTouchStart={checkDeselect}
+    >
+    <Layer>
+        <URLImage 
+          x={0}
+          y={0}
+          width={700}
+          height={500}
+          onClick={(e) => {selectShape(null);}}
+        />
       </Layer>
-      )
-  }
 
+      <Layer>
 
-  const Canvas = () => {
-
-    const [userHazards, setUserHazards] = useState({ rectangles: [], ellipses: [], images:[] });
-  
-    return (
-      //creates background stage (like canvas)
-      <Stage
-        width={window.innerWidth/2}
-        height={window.innerHeight}
-        // offset={"100px"}
-      >
-        {/* add a layer for the canvas */}
-        <Layer>
-          {/* loop through all the rectangles, and draw them on the screen */}
-          {userHazards.rectangles.map((eachRect, idx) => (
-            <DraggableReferenceRectangle
-              key={`USER_RECT_${eachRect.idx}`}
-              idx={eachRect.idx}
-              setUserHazards={setUserHazards}
-              userHazards={userHazards}
-              onDragEnd={STANDARD_RECTANGLE_DRAG}
-              initialPosition={{ x: eachRect.x, y: eachRect.y }}
-              onClick={(e) => { STANDARD_RECTANGLE_DELETE(e, eachRect.idx, eachRect, userHazards, setUserHazards) }}
-              // onSelect={(e) => { STANDARD_SELECT_RECTANGLE(e, eachRect.idx, eachRect, userHazards, setUserHazards ) }}
-              // onChange={(e) => { STANDARD_CHANGE_RECTANGLE (e, eachRect.idx, eachRect, userHazards, setUserHazards) }}
-              
-            />
-          ))}
-          {userHazards.ellipses.map((eachEllips, idx) => (
-            <DraggableReferenceEllipse
-            key={`USER_ELLIPS_${eachEllips.idx}`}
-            idx={eachEllips.idx}
+        {userHazards.forklifts.map((eachImg, idx) => (
+          <DraggableReferenceForklift
+            key={`USER_IMG_${eachImg.idx}`}
+            idx={eachImg.idx}
             setUserHazards={setUserHazards}
             userHazards={userHazards}
-            onDragEnd={STANDARD_ELLIPSE_DRAG}
-            initialPosition={{ x: eachEllips.x, y: eachEllips.y }}
-            onClick={(e) => { STANDARD_ELLIPSE_DELETE(e, eachEllips.idx, eachEllips, userHazards, setUserHazards) }}
-            />
-          ))}
-
-
-          {userHazards.images.map((eachImg, idx) => (
-          <DraggableReferenceImage
-          key={`USER_IMG_${eachImg.idx}`}
-          idx={eachImg.idx}
-          setUserHazards={setUserHazards}
-          userHazards={userHazards}
-          onDragEnd={STANDARD_IMAGE_DRAG}
-          initialPosition={{ x: eachImg.x, y: eachImg.y }}
-          onClick={(e) => { STANDARD_IMAGE_DELETE(e, eachImg.idx, eachImg, userHazards, setUserHazards) }}
+            onDragEnd={STANDARD_FORKLIFT_DRAG}
+            initialPosition={{ x: eachImg.x, y: eachImg.y }}
+            isSelected={eachImg.idx === selectedId}
+            onSelect={() => {
+              selectShape(eachImg.idx);
+            }}
+            onChange={(newAttrs) => {
+              const fork = userHazards.forklifts.slice();
+              fork[eachImg.idx] = newAttrs;
+              setUserHazards(fork);
+            }}
           />
-          ))}
-        </Layer>
+        )
+        )}
 
-        {/* Making toolbar draggable */}
-        <ToolBar
-          setUserHazards={setUserHazards}
-          userHazards={userHazards}
-        />
+        {userHazards.trucks.map((eachImg, idx) => (
+          <>
+            <DraggableReferenceTruck
+              key={`USER_IMG_${eachImg.idx}`}
+              idx={eachImg.idx}
+              setUserHazards={setUserHazards}
+              userHazards={userHazards}
+              onDragEnd={STANDARD_TRUCK_DRAG}
+              initialPosition={{ x: eachImg.x, y: eachImg.y }}
+              isSelected={eachImg.idx === selectedId}
+              onSelect={() => {
+                selectShape(eachImg.idx);
+              }}
+              onChange={(newAttrs) => {
+                const truck = userHazards.trucks.slice();
+                truck[eachImg.idx] = newAttrs;
+                setUserHazards(truck);
+              }}
+            />
 
-      </Stage >
-    );
-  }
+            {/* <Image
+                  image={cross}
+                  idx={eachRect.idx}
+                  crossPosition={crossPosition}
+                  setCrossPosition={crossPosition}
+                  setUserHazards={setUserHazards}
+                  userHazards={userHazards}
+                  x={eachRect.x + 30}
+                  y={eachRect.y - 10}
+                  width={20}
+                  height={20}
+              /> */}
+          </>
+        )
+        )}
+
+        {userHazards.cones.map((eachImg, idx) => (
+          <DraggableReferenceCone
+            key={`USER_IMG_${eachImg.idx}`}
+            idx={eachImg.idx}
+            setUserHazards={setUserHazards}
+            userHazards={userHazards}
+            onDragEnd={STANDARD_CONE_DRAG}
+            initialPosition={{ x: eachImg.x, y: eachImg.y }}
+            isSelected={eachImg.idx === selectedId}
+            onSelect={() => {
+              selectShape(eachImg.idx);
+            }}
+            onChange={(newAttrs) => {
+              const cones = userHazards.cones.slice();
+              cones[eachImg.idx] = newAttrs;
+              setUserHazards(cones);
+            }}
+          />
+        )
+        )}
+
+        {userHazards.robotarms.map((eachImg, idx) => (
+          <DraggableReferenceRobotArm
+            key={`USER_IMG_${eachImg.idx}`}
+            idx={eachImg.idx}
+            setUserHazards={setUserHazards}
+            userHazards={userHazards}
+            onDragEnd={STANDARD_ROBOTARM_DRAG}
+            initialPosition={{ x: eachImg.x, y: eachImg.y }}
+            isSelected={eachImg.idx === selectedId}
+            onSelect={() => {
+              selectShape(eachImg.idx);
+            }}
+            onChange={(newAttrs) => {
+              const rb = userHazards.robotarms.slice();
+              rb[eachImg.idx] = newAttrs;
+              setUserHazards(rb);
+            }}
+          />
+        )
+        )}
+
+        {userHazards.chemicalBarrels.map((eachImg, idx) => (
+          <DraggableReferenceChemicalBarrel
+            key={`USER_IMG_${eachImg.idx}`}
+            idx={eachImg.idx}
+            setUserHazards={setUserHazards}
+            userHazards={userHazards}
+            onDragEnd={STANDARD_CHEMICALBARREL_DRAG}
+            initialPosition={{ x: eachImg.x, y: eachImg.y }}
+            isSelected={eachImg.idx === selectedId}
+            onSelect={() => {
+              selectShape(eachImg.idx);
+            }}
+            onChange={(newAttrs) => {
+              const cb = userHazards.chemicalBarrels.slice();
+              cb[eachImg.idx] = newAttrs;
+              setUserHazards(cb);
+            }}
+          />
+        )
+        )}
+
+      </Layer>
+      {/* Making toolbar draggable */}
+      <ToolBar
+        setUserHazards={setUserHazards}
+        userHazards={userHazards}
+      />
+
+    </Stage >
+  );
+}
 
 
-  export default Canvas;
+export default Canvas;
