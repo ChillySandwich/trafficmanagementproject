@@ -1,4 +1,4 @@
-import SiteImg from '../HazardAllocation/Site.JPG';
+
 import React, { useRef, useEffect, useState } from 'react'
 import Canvas from './Canvas';
 import ToolBar from './ToolBar'
