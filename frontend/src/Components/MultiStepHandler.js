@@ -13,6 +13,8 @@ import './FileUploadFinal/Imageloader.css';
 import SiteDrawingLayout from './SiteInflowOutflow/SiteDrawingLayout';
 import PDF from './PDFDownloadPage/pdf';
 import Grid from "@material-ui/core/Grid";
+import DrawContainer from './SiteInflowOutflow/DrawContainer';
+
 
 export class MultiStepHandler extends Component {
     // Put some empty fields in here to hold data when it needs to be changed e.g. industry: ''. will need to do this for anything we want in the final 'pdf' 
@@ -20,6 +22,7 @@ export class MultiStepHandler extends Component {
 
     constructor(props) {
         super(props);
+        
         this.state = {
             step: 1,
             checkBox: false,
@@ -33,6 +36,7 @@ export class MultiStepHandler extends Component {
             disclaimer: false,
             siteImageUplodaded: false,
             hazardDropCompleted: false,
+            logo: Logo
         }
     }
     //put step value forward once, for submit buttons
@@ -52,6 +56,11 @@ export class MultiStepHandler extends Component {
     handleChange = input => e => {
         this.setState({ [input]: e.target.value })
     }
+    setImg = (passedImg) => {
+        this.setState({
+            img: passedImg
+        })
+    }
     render() {
 
         const { step } = this.state;
@@ -66,7 +75,7 @@ export class MultiStepHandler extends Component {
                         nextStep={this.nextStep}
                         handleChange={this.handleChange}
                         values={values}
-
+ 
                     />
                 )
             case 2:
@@ -76,14 +85,14 @@ export class MultiStepHandler extends Component {
                         prevStep={this.prevStep}
                         handleChange={this.handleChange}
                         values={values}
-
+ 
                     />
                 )
-
+ 
             // //Site Selection 
-
+ 
             case 3:
-
+ 
                 return (
                     <Grid container spacing={3}>
                     <Grid item xs={6}>
@@ -115,56 +124,54 @@ export class MultiStepHandler extends Component {
                         values={values}
                     />
                 )
-
-            case 5:
-                return (
-                    <HazardPage
-                        nextStep={this.nextStep}
-                        prevStep={this.prevStep}
-                        handleChange={this.handleChange}
-                        values={values}
-                    />
-                )
-            //Hazard Drop
-            case 6:
-                return (
-                    <HazardDrop
-                        nextStep={this.nextStep}
-                        prevStep={this.prevStep}
-                        handleChange={this.handleChange}
-                        values={values}
-                        showHaz={this.hazardList}
-                    // data={{ showHaz: this.state.selectedHaz }}
-                    />
-                )
-            case 7:
-                return (
-
-                    <SiteDrawingLayout
-                        nextStep={this.nextStep}
-                        prevStep={this.prevStep}
-                        handleChange={this.handleChange}
-                        values={values}
-                        showHaz={this.hazardList}
-                    />
-                )
-
-            case 8:
-                return (
-                    <PDF
-                        values={values}
-                        handleChange={this.handleChange}
-                        prevStep={this.prevStep}
-                        email={this.state.email}
-                        industry={this.state.industry}
-                        siteaddress={this.state.siteaddress}
-                        sqmSite={this.state.sqmSite}
-                        warehouse={this.state.warehouse}
-                    />
-                )
+                case 5:
+                    return (
+                        <HazardPage
+                            nextStep={this.nextStep}
+                            prevStep={this.prevStep}
+                            handleChange={this.handleChange}
+                            values={values}
+                        />
+                    )
+                //Hazard Drop
+                case 6:
+                    return (
+                        <HazardDrop
+                            nextStep={this.nextStep}
+                            prevStep={this.prevStep}
+                            handleChange={this.handleChange}
+                            values={values}
+                            showHaz={this.hazardList}
+                        // data={{ showHaz: this.state.selectedHaz }}
+                        />
+                    )
+                case 7:
+                    return (
+     
+                        <DrawContainer
+                            nextStep={this.nextStep}
+                            prevStep={this.prevStep}
+                            handleChange={this.handleChange}
+                            values={values}
+                            showHaz={this.hazardList}
+                        />
+                    )
+     
+                case 8:
+                    return (
+                        <PDF
+                            values={values}
+                            handleChange={this.handleChange}
+                            prevStep={this.prevStep}
+                            email={this.state.email}
+                            industry={this.state.industry}
+                            siteaddress={this.state.siteaddress}
+                            sqmSite={this.state.sqmSite}
+                            warehouse={this.state.warehouse}
+                        />
+                    )
+            }
+     
         }
-
-
     }
-}
-export default MultiStepHandler
+    export default MultiStepHandler
