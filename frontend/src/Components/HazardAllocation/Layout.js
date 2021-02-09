@@ -30,39 +30,38 @@ export default class Layout extends React.Component {
 
                     {/* <Canvas /> */}
 
-                    <div id="sidebar">
-                        {/* <Hazards /> */}
-                        <div id="flex-item">
-                            <span className="image">test</span> <span className="text"></span>
-                        </div>
-                        <div id="flex-item">
-                            <span className="image">test</span> <span className="text"></span>
-                        </div>
-                        <div id="flex-item">
-                            <span className="image">test</span> <span className="text"></span>
-                        </div>
-                        <div id="flex-item">
-                            <span className="image">test</span> <span className="text"></span>
-                        </div>
-                        <div id="flex-item">
-                            <span className="image">test</span> <span className="text"></span>
-                        </div>
-                        <div id="flex-item">
-                            <span className="image">test</span> <span className="text"></span>
-                        </div>
-                        <div id="flex-item">
-                            <span className="image">test</span> <span className="text"></span>
-                        </div>
-                    </div>
-
                     <div id="canvas">
                         <Canvas />
                         {/* <input type='button' value="Selected Hazards" onClick={() => console.log(this.props.data.showHaz)}/> */}
                     </div>
-                    <div style={{textAlign: 'right'}}>
-                        <input type='button' className='buttonStyle' value="Save and Continue" onClick={this.continue} />
-                        {/* <input type='button' className='buttonStyle' value="Back" onClick={this.back} /> */}
+
+                    <div id="sidebar">
+                        {/* <Hazards /> */}
+
+                        <div style={{fontWeight: 'bold', fontSize: '30px', textAlign: 'left', margin: '8px', color: 'white'}}> Key</div>
+                        <div id="flex-item">
+                            <span className="text">Forklift</span>
+                        </div>
+                        <div id="flex-item">
+                             <span className="text">Truck</span>
+                        </div>
+                        <div id="flex-item">
+                            <span className="text">Cone</span>
+                        </div>
+                        <div id="flex-item">
+                            <span className="text">Robot Arm</span>
+                        </div>
+                        <div id="flex-item">
+                            <span className="text">Chemical Barrel</span>
+                        </div>
+
+                        <input style={{marginTop:"50px", float: 'left'}} type='button' className='buttonStyle' value="Save and Continue" onClick={this.continue} />
+
                     </div>
+
+                    {/* <div > */}
+                        {/* <input type='button' className='buttonStyle' value="Back" onClick={this.back} /> */}
+                    {/* </div> */}
                 </div>
             </>
 
