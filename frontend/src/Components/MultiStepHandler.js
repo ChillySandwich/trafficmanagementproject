@@ -59,7 +59,7 @@ export class MultiStepHandler extends Component {
         const values = { email, industry, siteaddress, sqmSiteSize, warehouse, disclaimer, siteImageUplodaded, hazardSelect, hazardDropCompleted, selectedHaz }
         // Switch case for displaying each page, pass in current state of step as parameter to choose current case
         switch (step) {
-            //Login page
+            // Login page
             case 1:
                 return (
                     <Login
@@ -80,7 +80,7 @@ export class MultiStepHandler extends Component {
                     />
                 )
 
-            //Site Selection 
+            // //Site Selection 
 
             case 3:
 
