@@ -2,7 +2,7 @@ import HazardSelected from "./HazardSelected";
 
 const HazardListSelected = ({hazards, clickHazardSelected}) => {
     return (
-        <div>
+        <div className="hazardListSelected">
             {hazards.map((hazard) => (
             <HazardSelected key={hazard.id} hazard={hazard} clickHazardSelected={clickHazardSelected}/>
             ))}
