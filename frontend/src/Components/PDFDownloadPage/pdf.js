@@ -14,7 +14,7 @@ const pdf = (props) => {
     return (
         <>
             <div style={{ textAlign: 'left' }} className="MultiStepHandler" ref={ref}>
-                <h1 style={{ color: "black" }}> A review of your Traffic Management Plan</h1>
+                <h1 >A review of your Traffic Management Plan</h1>
                 <br></br>
                 <h2> Email: {props.email} </h2>
                 <h2> Industry: {props.industry}</h2>

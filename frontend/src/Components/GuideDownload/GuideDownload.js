@@ -25,16 +25,17 @@ export default class GuideDownload extends Component {
 
       <Grid item xs={6}>
       
-      <img alt="discussGraphic" className="discussGraphic" style={{width:'450px', height:'600px'}}src={Graphic} />
+      <img alt="discussGraphic" className="discussGraphic" style={{width:'380px', height:'530px'}}src={Graphic} />
       </Grid>
 
       <Grid item xs={6}>
       <div>
-        <h1> Korero ki to Roopu </h1>
-        <h1> Time to Talk to the Team </h1>
+        <pre id="guideHeader" style={{fontSize:"31px", color:"white"}}> Korero ki to Roopu    Time to talk to the Team </pre>
+        
         <p className="disclaimerParagraph">This downloadable guide has information about what a WTMP is and who needs one. It will help you gather the information you need about your site equipment, hazards and controls so you can make your own WTMP.</p>
         <button className='buttonStyle' style={{height: "100px"}} value="Download PDF Guide"> Download PDF Guide</button>
         <button className='buttonStyle' style={{height: "100px"}} value="View PDF Guide"> <img src={Preview} align="right|middle"/> View PDF Guide </button>
+        <div></div>
         <input className='buttonStyle' type='button' value="Back" onClick={this.back} />
         <input className='buttonStyle' type='button' value="Continue" onClick={this.continue} />
       </div>

@@ -35,9 +35,7 @@ export class SiteSelectionForm extends Component {
     render() {
         return (
             <form>
-
-            <h3 style={{color:"white", fontWeight:'bold'}}>Fill Out Your Site Details Here.</h3>
- 
+            <h1 >Fill Out Your Site Details Here</h1>
             <div className="form-group">
                 <input type="text" className="form-control" placeholder="Enter Industry" />
             </div>

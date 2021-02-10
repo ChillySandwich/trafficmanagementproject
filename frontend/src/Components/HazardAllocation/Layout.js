@@ -33,7 +33,7 @@ export default class Layout extends React.Component {
                     <div id="sidebar">
                         {/* <Hazards /> */}
 
-                        <div style={{fontWeight: 'bold', fontSize: '30px', textAlign: 'left', margin: '8px', color: 'white'}}> Key</div>
+                        <div style={{fontWeight: 'bold', fontSize: '30px', textAlign: 'left', margin: '8px', color: 'white'}}> Key: Drag + Drop</div>
                         <div id="flex-item">
                             <span className="text">Forklift</span>
                         </div>

@@ -6,14 +6,23 @@
     font-family: 'Roboto', sans-serif;
   }
 
+  #guideHeader{
+    color:white;
+    font-family: 'Roboto', sans-serif;
+
+  }
+
   .main {
     background:  rgba(113, 185, 227, 1);  
     font-size: 20px;
     padding-left:50px;
     padding-right: 50px;
+    font-family: 'Roboto', sans-serif;
   }
   .header {
     background:  rgba(113, 185, 227, 1);  
+    
+    
   }
   .footer {
     background:  rgba(113, 185, 227, 1);  
@@ -84,12 +93,12 @@
   } */
 
   .hazard-page-container {
-    padding: 30px;
+
     display: grid;
     grid-template-columns: 50% 50%;
     grid-row-gap: 50px;
     grid-column-gap: 50px;
-    margin: 30px;
+
   }
 
   .dropdown-buttons {
