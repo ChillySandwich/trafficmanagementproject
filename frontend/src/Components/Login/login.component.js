@@ -45,14 +45,14 @@ export default class Login extends Component {
                     <div className="loginForm">
                         <form style={{ borderRadius: '50px', padding: '30px' }}>
 
-                            <h1>Welcome | Nau Mai</h1>
+                            <pre className="IntroHeading">Nau Mai       Welcome!</pre>
 
                             <div>
-                                <input className="form-control" type="email" onChange={handleChange('email')} defaultValue={values.email} placeholder="Enter email" />
+                                <input className="form-control" style={{ backgroundColor: 'white', padding: '10px', borderRadius: '10px' }} type="email" onChange={handleChange('email')} defaultValue={values.email} placeholder="Enter email" />
                             </div>
 
                             <div>
-                                <input className="form-control" style={{ color: 'black' }} type="password" placeholder="Enter password" />
+                                <input className="form-control" style={{ backgroundColor: 'white', padding: '10px', borderRadius: '10px' }} type="password" placeholder="Enter password" />
                             </div>
 
                             <div className="form-group">

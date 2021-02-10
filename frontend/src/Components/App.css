@@ -14,7 +14,6 @@
     background:  rgba(113, 185, 227, 1);  
   }
   .loginForm {
-    background: rgba(210, 224, 224, 0.533);
     align-items:center;
     font-size: 25px;
     border-Radius: 10px;
@@ -57,7 +56,24 @@
   "footer footer";
   
   }
-    
+
+
+  .IntroHeading {
+    font-Weight: bold;
+    font-Size: 50px;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+  }
+
+
+  .Subtitle {
+    font-Weight: bold;
+    font-Size: 20px;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    margin-left: 50px;
+  }
+
   /* .hazard-page {
     background: #60d394;
   } */
@@ -200,9 +216,9 @@
     padding-right: 20px;
     border-Radius: 10px;
     font-Size: 25px;
-    font-weight: 300;
+    font-weight: bold;
     margin: 10px;
-    height: 80px;
+    height: 50px;
     width: 250px;
     border:none;
   }
@@ -297,5 +313,11 @@
     grid-row-gap: 50px;
     grid-column-gap: 50px;
     margin: 30px;
+  }
+
+  .form-control{
+    padding:10px;
+    background-color: white;
+    border-radius: 10px;
   }
 
