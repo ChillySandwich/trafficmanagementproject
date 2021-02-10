@@ -50,7 +50,15 @@ export default class Layout extends React.Component {
                             <span className="text">Chemical Barrel</span>
                         </div>
 
-                        <input style={{marginTop:"50px", float: 'left'}} type='button' className='buttonStyle' value="Save and Continue" onClick={this.continue} />
+                        <br></br>
+                        <br></br>
+                        
+
+                        <div id="flex-item">
+                            <input type='button' className='buttonStyle' value="Back" onClick={this.back} />
+                            <input type='button' className='buttonStyle' value="Save and Continue" onClick={this.continue} />
+                        </div>  
+
 
                     </div>
 
