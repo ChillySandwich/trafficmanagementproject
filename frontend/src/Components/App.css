@@ -290,5 +290,12 @@
     border-radius: 10px;
   }
 
-
+  .download-page-container {
+    padding: 30px;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-row-gap: 50px;
+    grid-column-gap: 50px;
+    margin: 30px;
+  }
 

@@ -8,6 +8,7 @@ import { Button } from 'react-bootstrap';
 import Logo from '../logo.png';
 import Graphic from '../ipad.png';
 import '../App.css';
+import { FaDivide } from "react-icons/fa";
 
 
 
@@ -25,8 +26,18 @@ export default class Login extends Component {
         return (
             <Grid container spacing={3}>
 
-                <Grid item xs={6} className="logoSide">
-                    <img alt="Logo" className="Logo" style={{margin: '50px', width:'350px', height:'240px'}} src={Logo} />
+                <Grid item xs={6} className="logoSide" style={{marginBottom: "10px"}}>
+                    {/* <img alt="Logo" className="Logo" style={{margin: '50px', widttextAlign: "left"h:'350px', height:'240px'}} src={Logo} /> */}
+<br></br>
+                    <div style={{color:'white', marginLeft: "5px", textAlign: "left"}}> 
+                      1) Step by step guide to creating a Workplace Traffic Management Plan -WTMP
+                    </div>
+                    <div style={{color:'white', marginLeft: "5px", textAlign: "left"}}> 
+                    2) Ideas to engage the whole team in the process and increase safety 
+                    </div>
+                    <div style={{color:'white', marginLeft: "5px", textAlign: "left"}}> 
+                    3) Resources and information to help you manage hazards.
+                    </div>
                     <img alt="iPadGraphic" className="iPadGraphic" src={Graphic} />
                 </Grid>
 
