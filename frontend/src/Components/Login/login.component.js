@@ -27,7 +27,7 @@ export default class Login extends Component {
             <Grid container spacing={3}>
 
                 <Grid item xs={6} className="logoSide" style={{marginBottom: "10px"}}>
-                    {/* <img alt="Logo" className="Logo" style={{margin: '50px', widttextAlign: "left"h:'350px', height:'240px'}} src={Logo} /> */}
+
 <br></br>
                     <div style={{color:'white', marginLeft: "5px", textAlign: "left"}}> 
                       1) Step by step guide to creating a Workplace Traffic Management Plan -WTMP

@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import '../App.css';
 import { Link } from 'react-router-dom';
 import { Checkbox } from '@material-ui/core';
-
+import Warning from '../Warning.png';
 
 export default class Login extends Component {
   continue = e => {
@@ -19,7 +19,8 @@ export default class Login extends Component {
     const { values, handleChange } = this.props;
     return (
       <div >
-        <h1 >Disclaimer | Whakakahoretanga </h1>
+        <h1 >Disclaimer | Whakakahoretanga <img src={Warning} style={{margin: '50px', width:'50px', height:'60px'}}/> </h1>  
+       
         <p className="disclaimerParagraph">The Commissioner is not liable for any damages arising in contract, tort or otherwise from the use of or inability to use this site or any material contained in it, or from any action or decision taken as a result of using the site.
 
         The materials on this site comprise the Information Commissioner's views; they do not constitute legal or other professional advice. You should consult your professional adviser for legal or other advice.
