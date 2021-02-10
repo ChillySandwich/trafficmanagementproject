@@ -188,6 +188,11 @@
     width: 300px;
   }
 
+  .iPadGraphic{
+    height: 400px;
+    width: 350px;
+  }
+
   .buttonStyle{
     background-color: rgba(233, 180, 100, 1);
     color: rgba(81, 78, 78, 1); 
@@ -226,6 +231,7 @@
   .disclaimerParagraph{
     padding: 30px;
     border-Radius: 8px;
+    color: rgba(81, 78, 78, 1);
   }
 
   .inflow-outflow-canvas {

@@ -5,6 +5,7 @@ import SiteSelectionForm from './SiteSelection/SiteSelectionForm';
 import SiteSelectionMap from './SiteSelection/SiteSelectionMap';
 import SiteUpload from './FileUploadFinal/Imageloader';
 import Disclaimer from './Disclaimer/disclaimer.component';
+import GuideDownload from './GuideDownload/GuideDownload';
 import HazardPage from './HazardSelect/HazardPage';
 import HazardDrop from './HazardAllocation/Layout';
 import Logo from './logo.png';
@@ -105,10 +106,23 @@ export class MultiStepHandler extends Component {
  
                     />
                 )
+
+                case 3:
+                    return (
+                        <GuideDownload
+                            nextStep={this.nextStep}
+                            prevStep={this.prevStep}
+                            handleChange={this.handleChange}
+                            values={values}
+     
+                        />
+                    )
  
+
+
             // //Site Selection 
  
-            case 3:
+            case 4:
  
                 return (
                     <Grid container spacing={3}>
@@ -132,7 +146,7 @@ export class MultiStepHandler extends Component {
                     </Grid>
                 )
             // e.g. hazard select. import the component that is needed and then return that component below.
-            case 4:
+            case 5:
                 return (
                     <SiteUpload
                         nextStep={this.nextStep}
@@ -142,7 +156,7 @@ export class MultiStepHandler extends Component {
                         setUploadedImage={this.setUploadedImage}
                     />
                 )
-                case 5:
+                case 6:
                     return (
                         <HazardPage
                             nextStep={this.nextStep}
@@ -153,7 +167,7 @@ export class MultiStepHandler extends Component {
                         />
                     )
                 //Hazard Drop
-                case 6:
+                case 7:
                     return (
                         <HazardDrop
                             nextStep={this.nextStep}
@@ -165,7 +179,7 @@ export class MultiStepHandler extends Component {
                         // data={{ showHaz: this.state.selectedHaz }}
                         />
                     )
-                case 7:
+                case 8:
                     return (
      
                         <DrawContainer
@@ -176,7 +190,7 @@ export class MultiStepHandler extends Component {
                             setImg={this.setImg}
                         />
                     )     
-                case 8:
+                case 9:
                     return (
                         <PDF
                             values={values}

@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import SiteSelection from '../SiteSelection/SiteSelection';
 import { Button } from 'react-bootstrap';
 import Logo from '../logo.png';
+import Graphic from '../ipad.png';
 import '../App.css';
 
 
@@ -25,7 +26,8 @@ export default class Login extends Component {
             <Grid container spacing={3}>
 
                 <Grid item xs={6} className="logoSide">
-                    <img alt="Logo" className="Logo" style={{margin: '50px', width:'450px', height:'340px'}} src={Logo} />
+                    <img alt="Logo" className="Logo" style={{margin: '50px', width:'350px', height:'240px'}} src={Logo} />
+                    <img alt="iPadGraphic" className="iPadGraphic" src={Graphic} />
                 </Grid>
 
                 <Grid item xs={6}>
