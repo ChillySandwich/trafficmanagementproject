@@ -39,23 +39,19 @@ export class SiteSelectionForm extends Component {
             <h3 style={{color:"white", fontWeight:'bold'}}>Fill Out Your Site Details Here.</h3>
  
             <div className="form-group">
-                <label>Enter Industry</label>
                 <input type="text" className="form-control" placeholder="Enter Industry" />
             </div>
  
             <div className="form-group">
-              <label>Enter Site Address</label>
             <input ref={this.autocompleteInput} className="form-control" id="autocomplete" placeholder="Enter your Address"
          type="text"></input>
             </div>
  
             <div className="form-group">
-                <label>Enter Square Meters</label>
                 <input type="text" className="form-control" placeholder="Enter Sqm" />
             </div>
  
             <div className="form-group">
-                <label>Enter Warehouse</label>
                 <input type="text" className="form-control" placeholder="Enter Warehouse" />
             </div>
             <input type='button'className= 'buttonStyle'  value="Back" onClick={this.back} />
