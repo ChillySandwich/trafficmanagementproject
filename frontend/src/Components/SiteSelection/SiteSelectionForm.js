@@ -36,7 +36,7 @@ export class SiteSelectionForm extends Component {
         return (
             <form>
  
-            <h3>Fill Out Your Site Details Here.</h3>
+            <h3 style={{color:"white", fontWeight:'bold'}}>Fill Out Your Site Details Here.</h3>
  
             <div className="form-group">
                 <label>Enter Industry</label>

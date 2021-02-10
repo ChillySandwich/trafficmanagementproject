@@ -55,12 +55,12 @@ export default class Login extends Component {
                                 <input className="form-control" style={{ backgroundColor: 'white', padding: '10px', borderRadius: '10px' }} type="password" placeholder="Enter password" />
                             </div>
 
-                            <div className="form-group">
+                            {/* <div className="form-group">
                                 <div>
                                     <input className="form-control" type="checkbox" id="customCheck1" />
                                     <label style={{ color: "black" }} htmlFor="customCheck1">Remember me</label>
                                 </div>
-                            </div>
+                            </div> */}
 
                             <input className='buttonStyle' type='button' value="Login" onClick={this.continue} />
 

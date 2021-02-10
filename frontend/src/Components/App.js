@@ -14,7 +14,7 @@ export default function App () {
 
  <body>
  <div className="header">
-   <h1 style={{color:'white', fontWeight: "bold", marginLeft: "55px", marginTop: "20px", marginBottom: '10px'}}>Site Mate</h1>
+   <h1 style={{color:'white', fontWeight: "bold", marginLeft: "55px", marginTop: "10px", marginBottom: '10px'}}>Site Mate</h1>
    <pre className="Subtitle"> Hoki ora mai     Come Home Safely</pre>
  </div>
  <div className="main"><MultiStepHandler/></div> 
