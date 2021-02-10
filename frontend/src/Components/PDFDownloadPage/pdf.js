@@ -1,7 +1,8 @@
 import React from 'react';
-import Pdf from "react-to-pdf";
+import jsPDF from "jspdf";
 
 const ref = React.createRef();
+
 
 const pdf = (props) => {
 
@@ -9,6 +10,20 @@ const pdf = (props) => {
     const back = e => {
         e.preventDefault();
         props.prevStep();
+    }
+
+    var jsPdfGenerator = () => {
+        var doc = new jsPDF ('p', 'pt');
+
+        doc.text(20, 20, "Email: " + props.email);
+        doc.text(20, 40, "Industry: " + props.industry);
+        doc.text(20,60, "Site Address: " + props.siteaddress);
+        doc.text(20, 80, "Site Size (Square meters): " + props.sqmSite);
+        var img = new Image()
+        img.src = props.uploadedImage;
+        doc.addImage(img, 'png', 20, 100, 450, 300)
+        doc.save("traffic-management-plan.pdf");
+       
     }
 
     return (
@@ -21,15 +36,16 @@ const pdf = (props) => {
                 <h2> Site Address: {props.siteaddress}</h2>
                 <h2> Site Size(Sqm): {props.sqmSite}</h2>
                 <h2> Warehouse: {props.warehouse}</h2>
+                <h2> Site Image: </h2>
+                <img src={props.uploadedImage} width="60%" height = "500px"/>
             </div>
 
             <input type='button' className='buttonStyle' value="Back" onClick={back} />
-            <Pdf targetRef={ref} filename="Traffic-management-plan.pdf">
-                {({ toPdf }) => <button className='buttonStyle' onClick={toPdf}> Download TMP </button>}
-            </Pdf>
-            
+            <button className='buttonStyle' onClick={jsPdfGenerator}> Generate PDF </button>
         </>
     );
 }
 
 export default pdf;
+
+

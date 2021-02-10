@@ -3,7 +3,6 @@ import React, { Component } from "react";
 import Grid from '@material-ui/core/Grid';
 import ReactDOM from 'react-dom';
 import { Link } from 'react-router-dom';
-import SiteSelection from '../SiteSelection/SiteSelection';
 import { Button } from 'react-bootstrap';
 import Logo from '../logo.png';
 import Graphic from '../ipad.png';
