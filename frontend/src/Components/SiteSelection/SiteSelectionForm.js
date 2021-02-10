@@ -35,7 +35,7 @@ export class SiteSelectionForm extends Component {
     render() {
         return (
             <form>
- 
+
             <h3 style={{color:"white", fontWeight:'bold'}}>Fill Out Your Site Details Here.</h3>
  
             <div className="form-group">

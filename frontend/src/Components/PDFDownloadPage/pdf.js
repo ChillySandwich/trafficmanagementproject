@@ -22,10 +22,12 @@ const pdf = (props) => {
                 <h2> Site Size(Sqm): {props.sqmSite}</h2>
                 <h2> Warehouse: {props.warehouse}</h2>
             </div>
-            <Pdf targetRef={ref} filename="Traffic-management-plan.pdf">
-                {({ toPdf }) => <button onClick={toPdf}> Download TMP </button>}
-            </Pdf>
+
             <input type='button' className='buttonStyle' value="Back" onClick={back} />
+            <Pdf targetRef={ref} filename="Traffic-management-plan.pdf">
+                {({ toPdf }) => <button className='buttonStyle' onClick={toPdf}> Download TMP </button>}
+            </Pdf>
+            
         </>
     );
 }
