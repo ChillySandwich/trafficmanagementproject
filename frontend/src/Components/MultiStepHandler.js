@@ -238,6 +238,7 @@ export class MultiStepHandler extends Component {
                         sqmSite={this.state.sqmSite}
                         warehouse={this.state.warehouse}
                         dndImg={this.state.dndImg}
+                        uploadedImage={this.state.uploadedImage}
                     />
                 )
         }

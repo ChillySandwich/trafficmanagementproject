@@ -22,6 +22,9 @@ const pdf = (props) => {
         var img = new Image()
         img.src = props.uploadedImage;
         doc.addImage(img, 'png', 20, 100, 450, 300)
+        var img2 = new Image()
+        img2.src = props.dndImg;
+        doc.addImage(img2, 'png', 20, 500, 450, 300)
         doc.save("traffic-management-plan.pdf");
        
     }
