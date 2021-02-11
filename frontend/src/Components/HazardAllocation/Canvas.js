@@ -569,7 +569,7 @@ const DraggableReferenceCone = (props) => {
 const DraggableReferenceRobotArm = (props) => {
 
 
-  const [img] = useImage('https://static.thenounproject.com/png/175817-200.png', 'Anonymous');
+  const [img] = useImage('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOW5HzY4xssIGPu8wslUL9jsMdF78oXqMmaA&usqp=CAU', 'Anonymous');
 
   const [imagePosition, setImagePosition] = useState(props.initialPosition);
   const draggableRef = useRef(null);

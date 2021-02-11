@@ -8,7 +8,6 @@
     .container{
     margin: auto;
     width: 100%;
-    max-width: 600px;
     }
     .errorMsg{
     color: red;
