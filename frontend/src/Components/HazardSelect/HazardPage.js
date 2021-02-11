@@ -17,7 +17,7 @@ function HazardPage(props) {
         },
         {
             id: 2,
-            name: "Chemical Hazard",
+            name: "Industrial Chemicals",
             description: "...",
             selected: false,
             img: "./Barrel.png",
@@ -38,7 +38,7 @@ function HazardPage(props) {
         },
         {
             id: 5,
-            name: "Personell",
+            name: "Site Visitor",
             description: "...",
             selected: false,
             img: "./Person.png",
@@ -93,7 +93,7 @@ function HazardPage(props) {
 
   return (
     <div>
-        <img src={props.uploadedImage} alt=""></img>
+        
       <div className="hazard-page-container">
           
           {/* <div>
@@ -107,27 +107,27 @@ function HazardPage(props) {
             <h1 className="pageTitle">Upload your site information</h1>
             <div className="dropdown-buttons">
             <DropdownButton id="dropdown-basic-button-mobileplant" title="Mobile Plant">
-                <Dropdown.Item href="#/action-1"><img className="dropdown-icon" alt="" src="./Truck.png"></img>Truck</Dropdown.Item>
-                <Dropdown.Item href="#/action-1"><img className="dropdown-icon" alt="" src="./Forklift.png"></img>Forklift</Dropdown.Item>
+                <Dropdown.Item onClick={() => clickHazard(3)} ><img className="dropdown-icon" alt="" src="./Truck.png"></img>Truck</Dropdown.Item>
+                <Dropdown.Item onClick={() => clickHazard(1)} ><img className="dropdown-icon" alt="" src="./Forklift.png"></img>Forklift</Dropdown.Item>
             </DropdownButton>
-            <DropdownButton id="dropdown-basic-button-equipment" title="Equipment">
-                <Dropdown.Item href="#/action-1"><img className="dropdown-icon" alt="" src="./Machinery.png"></img>Machine Arm</Dropdown.Item>
+            <DropdownButton  id="dropdown-basic-button-equipment" title="Equipment">
+                <Dropdown.Item onClick={() => clickHazard(4)} ><img className="dropdown-icon" alt="" src="./Machinery.png"></img>Machine Arm</Dropdown.Item>
 
             </DropdownButton>
             <DropdownButton id="dropdown-basic-button-personell" title="Personell">
-                <Dropdown.Item href="#/action-1"><img className="dropdown-icon" alt="" src="./Person.png"></img>Visitor</Dropdown.Item>
+                <Dropdown.Item onClick={() => clickHazard(5)} ><img className="dropdown-icon" alt="" src="./Person.png"></img>Site Visitor</Dropdown.Item>
             </DropdownButton>
             <DropdownButton id="dropdown-basic-button-chemical" title="Chemical Hazards">
                 
-                <Dropdown.Item href="#/action-1"><img className="dropdown-icon" alt="" src="./Barrel.png"></img>Industrial Chemicals</Dropdown.Item>
+                <Dropdown.Item onClick={() => clickHazard(2)} ><img className="dropdown-icon" alt="" src="./Barrel.png"></img>Industrial Chemicals</Dropdown.Item>
                 
             </DropdownButton>
             <DropdownButton id="dropdown-basic-button-other" title="Other">
-                <Dropdown.Item href="#/action-1">Other</Dropdown.Item>
+                <Dropdown.Item >Other</Dropdown.Item>
             </DropdownButton>
             </div>
 
-            <HazardList hazards={hazards} clickHazard={clickHazard}/>
+            {/* <HazardList hazards={hazards} clickHazard={clickHazard}/> */}
         </div>
 
         <div>

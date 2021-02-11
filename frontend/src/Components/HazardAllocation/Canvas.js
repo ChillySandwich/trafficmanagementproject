@@ -3,6 +3,7 @@ import { Stage, Layer, Rect, Text, Ellipse, Image, Transformer } from "react-kon
 import Konva from "konva";
 import useImage from 'use-image';
 import { v4 as uuidv4 } from 'uuid';
+import { FaSave } from "react-icons/fa";
 
 class URLImage extends React.Component {
   state = {
@@ -42,6 +43,7 @@ class URLImage extends React.Component {
         y={this.props.y}
         width={this.props.width}
         height={this.props.height}
+        //image={this.props.image}
         image={this.state.image}
         ref={node => {
           this.imageNode = node;
@@ -825,8 +827,12 @@ const Canvas = () => {
 
   console.log(`SELECTED SHAPE: ${selectedId}`)
 
+
+ 
+
   return (
     //creates background stage (like canvas)
+    
     <Stage
       width={850}
       height={600}
@@ -840,6 +846,7 @@ const Canvas = () => {
           width={700}
           height={500}
           onClick={(e) => {selectShape(null);}}
+          // image={this.props.uploadedImage}
         />
       </Layer>
 
@@ -972,7 +979,8 @@ const Canvas = () => {
         userHazards={userHazards}
       />
 
-    </Stage >
+    </Stage>
+    
   );
 }
 
