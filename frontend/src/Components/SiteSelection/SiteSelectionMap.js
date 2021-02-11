@@ -8,8 +8,6 @@ let markerArray = [];
     const [buttonTextMac, setButtonTextMac] = useState("For Mac"); //same as creating your state variable where "Next" is the default value for buttonText and setButtonText is the setter function for your state variable instead of setState
     const [buttonTextWindows, setButtonTextWindows] = useState("For Windows");
 
-    const changeText = (text) => setButtonTextMac(text);
-    const changeTextWindows = (text) => setButtonTextWindows(text);
         return (
           <div> 
              <br></br> 
@@ -22,7 +20,7 @@ let markerArray = [];
                         <button className="helpButtons" color="white" value="For Mac" onClick={() => setButtonTextMac("Shift + Command + 3")}>{buttonTextMac}</button>
         </Grid>
               </Grid>       
-        <iframe style={{padding: "30px", backgroundColor: "white", borderRadius: "10px", border: "none"}} src="https://snazzymaps.com/embed/289197" title = "map" width="90%" height="600px" allow="fullscreen"></iframe> 
+        <iframe style={{padding: "15px", backgroundColor: "white", borderRadius: "10px", border: "none"}} src="https://snazzymaps.com/embed/289197" title = "map" width="90%" height="600px" allow="fullscreen"></iframe> 
        <div>
         </div>
         </div>

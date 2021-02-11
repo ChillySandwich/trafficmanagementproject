@@ -3,12 +3,12 @@
 
 
   .h1{
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Roboto';
   }
 
   #guideHeader{
     color:white;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Roboto';
 
   }
   .helpButtons {
@@ -22,7 +22,7 @@
     font-size: 20px;
     padding-left:50px;
     padding-right: 50px;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Roboto';
   }
   .header {
     background:  rgba(113, 185, 227, 1);  
@@ -63,7 +63,7 @@
   height: 100vh;
   display: flex; 
   font-weight: 400;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto';
   background: rgba(113, 185, 227, 1);
   display: grid;
   grid-template-rows: 1fr 5fr 1fr;
@@ -81,7 +81,7 @@
     font-Weight: bold;
     font-Size: 50px;
     color: white;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Roboto';
   }
 
 
@@ -89,7 +89,7 @@
     font-Weight: bold;
     font-Size: 20px;
     color: white;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Roboto';
     margin-left: 50px;
   }
 
