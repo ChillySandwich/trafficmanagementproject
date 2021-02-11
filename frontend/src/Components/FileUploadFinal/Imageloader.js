@@ -33,16 +33,7 @@ const Imageloader = (props) => {
             setError(true);
         }
     };
-    React.useEffect(() => {
-        const data = localStorage.getItem('siteImg');
-        if (data) {
-            setImgPreview(JSON.parse(data));
-        }
-         }, [])
-
-    React.useEffect(() => {
-        localStorage.setItem('siteImg', JSON.stringify(imgPreview));
-    })
+    
     return (
         <div className="Imageloader">
             <div className="container">
