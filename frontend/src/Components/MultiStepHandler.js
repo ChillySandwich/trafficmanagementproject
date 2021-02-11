@@ -223,7 +223,8 @@ export class MultiStepHandler extends Component {
                         handleChange={this.handleChange}
                         values={values}
                         setImg={this.setImg}
-                        uploadedImage={this.state.uploadedImage}
+                        uploadedImage={this.state.dndImg}
+                        dndImg={this.state.dndImg}
                     />
                 )
             case 9:
