@@ -855,6 +855,7 @@ const Canvas = (props) => {
       onMouseDown={checkDeselect}
       onTouchStart={checkDeselect}
       ref={stageRef}
+      onClick={handleExport}
     >
     <Layer>
         <URLImage 
@@ -865,28 +866,6 @@ const Canvas = (props) => {
           onClick={(e) => {selectShape(null);}}
           // image={this.props.uploadedImage}
         />
-
-      </Layer>
-
-      <Layer>
-      <Rect
-          x={710}
-          y={430}
-          width={135}
-          height={51}
-          onClick={handleExport}
-          cornerRadius={[10, 10, 10, 10]}
-          fill={"#f0b15d"}
-        />
-      <Text
-          text={"Save Map"}
-          x={716}
-          y={442}
-          fontSize={26}
-          onClick={handleExport}
-          fill={"#4d4b49"}
-          fontStyle={"bold"}
-      />
 
       </Layer>
 
