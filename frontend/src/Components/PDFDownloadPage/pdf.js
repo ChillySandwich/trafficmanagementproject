@@ -38,6 +38,7 @@ const pdf = (props) => {
                 <h2> Warehouse: {props.warehouse}</h2>
                 <h2> Site Image: </h2>
                 <img src={props.uploadedImage} width="60%" height = "500px"/>
+                <img src = {props.dndImg}></img>
             </div>
 
             <input type='button' className='buttonStyle' value="Back" onClick={back} />

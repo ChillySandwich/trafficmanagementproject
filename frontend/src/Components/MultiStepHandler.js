@@ -7,7 +7,7 @@ import SiteUpload from './FileUploadFinal/Imageloader';
 import Disclaimer from './Disclaimer/disclaimer.component';
 import GuideDownload from './GuideDownload/GuideDownload';
 import HazardPage from './HazardSelect/HazardPage';
-import HazardDrop from './HazardAllocation/Layout';
+import HazardDrop from './HazardAllocation/HazardDrop';
 import Logo from './logo.png';
 import './App.css';
 import './FileUploadFinal/Imageloader.css';
@@ -67,7 +67,7 @@ export class MultiStepHandler extends Component {
             img: passedImg
         })
     }
-    setDndImg = (passedImg) => {
+    setdndImg = (passedImg) => {
         this.setState({
             dndImg: passedImg
         })
@@ -210,7 +210,7 @@ export class MultiStepHandler extends Component {
                         handleChange={this.handleChange}
                         values={values}
                         showHaz={this.hazardList}
-                        setDndImg={this.setDndImg}
+                        setdndImg={this.setdndImg}
                     // data={{ showHaz: this.state.selectedHaz }}
                     />
                 )
@@ -237,7 +237,7 @@ export class MultiStepHandler extends Component {
                         siteaddress={this.state.siteaddress}
                         sqmSite={this.state.sqmSite}
                         warehouse={this.state.warehouse}
-                        uploadedImage={this.state.uploadedImage}
+                        dndImg={this.state.dndImg}
                     />
                 )
         }

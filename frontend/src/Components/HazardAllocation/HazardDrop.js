@@ -3,7 +3,10 @@ import Canvas from "./Canvas";
 import "./Layout.css"
 
 
-export default class Layout extends React.Component {
+export default class HazardDrop extends React.Component {
+    constructor(props){
+        super(props);
+    }
     //'Continue' event handler, calls the nextStep method from MultiStepHandler to go forward a page
     continue = e => {
         e.preventDefault();
@@ -14,6 +17,14 @@ export default class Layout extends React.Component {
         e.preventDefault();
         this.props.prevStep();
     }
+
+    setdndImg = e => {
+        e.preventDefault();
+        this.props.setdndImg();
+    }
+
+
+    
     handleChange = input => e => {
         this.setState({ [input]: e.target.value })
     }
@@ -26,7 +37,8 @@ export default class Layout extends React.Component {
                     {/* <Canvas /> */}
 
                     <div id="canvas">
-                        <Canvas />
+                        <Canvas 
+                         setdndImg={this.props.setdndImg}/>
                         {/* <input type='button' value="Selected Hazards" onClick={() => console.log(this.props.data.showHaz)}/> */}
                     </div>
 
@@ -56,15 +68,12 @@ export default class Layout extends React.Component {
 
                         <div id="flex-item">
                             <input type='button' className='buttonStyle' value="Back" onClick={this.back} />
-                            <input type='button' className='buttonStyle' value="Save and Continue" onClick={this.continue} />
+                            <input type='button' className='buttonStyle' value="Continue" onClick={this.continue} />
                         </div>  
 
 
                     </div>
 
-                    {/* <div > */}
-                        {/* <input type='button' className='buttonStyle' value="Back" onClick={this.back} /> */}
-                    {/* </div> */}
                 </div>
             </>
 
