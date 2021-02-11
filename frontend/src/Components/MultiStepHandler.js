@@ -87,6 +87,41 @@ export class MultiStepHandler extends Component {
         switch (step) {
 
             //Login page
+            // case 1:
+            // return (
+            //     <HazardPage
+            //         nextStep={this.nextStep}
+            //         prevStep={this.prevStep}
+            //         handleChange={this.handleChange}
+            //         values={values}
+            //         uploadedImage={this.state.uploadedImage}
+            //     />
+            // )
+            // case 1:
+            //     return (
+            //         <SiteUpload
+            //             nextStep={this.nextStep}
+            //             prevStep={this.prevStep}
+            //             handleChange={this.handleChange}
+            //             values={values}
+            //             setUploadedImage={this.setUploadedImage}
+            //         />
+            //     )
+
+                // case 2:
+                //     return (
+                //         <DrawContainer
+                //             nextStep={this.nextStep}
+                //             prevStep={this.prevStep}
+                //             handleChange={this.handleChange}
+                //             values={values}
+                //             setImg={this.setImg}
+                //             uploadedImage={this.state.uploadedImage}
+                            
+                //         />
+                //     )
+
+
             case 1:
                 return (
                     <Login
@@ -188,6 +223,7 @@ export class MultiStepHandler extends Component {
                         handleChange={this.handleChange}
                         values={values}
                         setImg={this.setImg}
+                        uploadedImage={this.state.uploadedImage}
                     />
                 )
             case 9:

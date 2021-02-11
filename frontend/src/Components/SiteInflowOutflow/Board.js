@@ -19,8 +19,9 @@ class Board extends React.Component {
             pathsry: [],
             save: false,
             img: null,
-            image2: null
-
+            image2: null,
+            imageResized: null,
+            saved: false
         }
 
         this.handleClick = this.handleClick.bind(this);
@@ -31,6 +32,8 @@ class Board extends React.Component {
         this.clearCanvas = this.clearCanvas.bind(this);
         this.save = this.save.bind(this);
         this.load = this.load.bind(this);
+        this.passbackImg = this.passbackImg.bind(this);
+        this.calculateAspectRatioFit = this.calculateAspectRatioFit.bind(this);
         //this.setState = this.setState.bind(this);
 
         
@@ -44,16 +47,46 @@ class Board extends React.Component {
 
         var canvas = document.querySelector('#board');
         var ctx = canvas.getContext('2d');
+        // const pic = new Image();
+        // pic.src = mapImage;
+        // pic.onload = function() {
+        //     ctx.drawImage(pic, 0, 0);
+        // }
+        canvas.width = window.innerWidth * 0.8;
+        canvas.height = window.innerHeight * 0.8;
         const pic = new Image();
-        pic.src = mapImage;
-        pic.onload = function() {
-            ctx.drawImage(pic, 0, 0)
-            
+        pic.src = this.props.uploadedImage;
+        pic.onload = () => {
+            console.log("wait")
+            var r = this.calculateAspectRatioFit(pic.width, pic.height, canvas.width, canvas.height)
+            pic.width = r.width;
+            pic.height = r.height;
+            canvas.width = r.width;
+            canvas.height = r.height;
+            ctx.drawImage(pic, 0, 0, r.width, r.height);
+            ctx.lineWidth = 5;
+            ctx.lineJoin = 'round';
+            ctx.lineCap = 'round';
+            this.setState({
+                imageResized: pic,
+                saved: false
+            })
         }
+        console.log("wait2")
         
+        
+        //pic.onload = function() {
+            //ctx.drawImage(pic, 0, 0, pic.width, pic.height, 0, 0, canvas.width, canvas.height);            
+            
+            
+            // canvas.width = pic.width;
+            // canvas.height = pic.height;
+        
+        //}
+        //this.load();
         this.drawOnCanvas();
         
-        ctx.lineWidth = 20;
+        ctx.lineWidth = 5;
         ctx.lineJoin = 'round';
         ctx.lineCap = 'round';
         console.log("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH")
@@ -85,19 +118,21 @@ class Board extends React.Component {
 
         // i dont trust this code below very much 
 
-        const pic = new Image();
-        pic.src = mapImage;
-        pic.onload = function() {
-            canvas.width = pic.width;
-            canvas.height = pic.height;
-            ctx.drawImage(pic, 0, 0)
-            ctx.lineWidth = 5;
-            ctx.lineJoin = 'round';
-            ctx.lineCap = 'round';
+        // const pic = new Image();
+        // pic.src = this.props.uploadedImage;
+        // pic.onload = function() {
+        //     // canvas.width = pic.width;
+        //     // canvas.height = pic.height;
+            
+        //     ctx.drawImage(pic, 0, 0)
+        //     ctx.lineWidth = 5;
+        //     ctx.lineJoin = 'round';
+        //     ctx.lineCap = 'round';
         
         
-        }
+        // }
 
+        
         // ^^^
 
         
@@ -166,7 +201,7 @@ class Board extends React.Component {
             isOrangeOn: false,
             isGreenOn: false,
             isYellowOn: false,
-            helpMessage: "HELP MESSAGE FOR: outflow outflow outflow"
+            helpMessage: "Draw the outflow of traffic from your site"
           }));
         var canvas = document.querySelector('#board');
         var ctx = canvas.getContext('2d');
@@ -183,7 +218,7 @@ class Board extends React.Component {
             isOrangeOn: true,
             isGreenOn: false,
             isYellowOn: false,
-            helpMessage: "HELP MESSAGE FOR: pedestrian pedestrian pedestrian"
+            helpMessage: "Draw the pedestrian zone(s)"
           }));
         var canvas = document.querySelector('#board');
         var ctx = canvas.getContext('2d');
@@ -196,7 +231,7 @@ class Board extends React.Component {
             isOrangeOn: false,
             isGreenOn: true,
             isYellowOn: false,
-            helpMessage: "HELP MESSAGE FOR: inflow inflow inflow"
+            helpMessage: "Draw the inflow of traffic coming into your site"
           }));
         var canvas = document.querySelector('#board');
         var ctx = canvas.getContext('2d');
@@ -209,7 +244,7 @@ class Board extends React.Component {
             isOrangeOn: false,
             isGreenOn: false,
             isYellowOn: true,
-            helpMessage: "HELP MESSAGE FOR: loading-zone loading-zone loading-zone"
+            helpMessage: "Draw the location of the loading zones"
           }));
         var canvas = document.querySelector('#board');
         var ctx = canvas.getContext('2d');
@@ -217,15 +252,46 @@ class Board extends React.Component {
     }
 
     clearCanvas() {
+        this.setState({
+            saved: false            
+        })
         var canvas = document.querySelector('#board');
         var ctx = canvas.getContext('2d');
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         const pic = new Image();
-        pic.src = mapImage;
-        pic.onload = function() {
-            ctx.drawImage(pic, 0, 0)
-        }
+        pic.src = this.props.uploadedImage;
+        pic.onload = () => {
+            console.log("wait")
+            var r = this.calculateAspectRatioFit(pic.width, pic.height, canvas.width, canvas.height)
+            pic.width = r.width;
+            pic.height = r.height;
+            canvas.width = r.width;
+            canvas.height = r.height;
+            ctx.drawImage(pic, 0, 0, r.width, r.height);
+            ctx.lineWidth = 5;
+            ctx.lineJoin = 'round';
+            ctx.lineCap = 'round';
+        
+        ctx.drawImage(pic, 0, 0, r.width, r.height);
     }
+}
+
+    /**
+  * Conserve aspect ratio of the original region. Useful when shrinking/enlarging
+  * images to fit into a certain area.
+  *
+  * @param {Number} srcWidth width of source image
+  * @param {Number} srcHeight height of source image
+  * @param {Number} maxWidth maximum available width
+  * @param {Number} maxHeight maximum available height
+  * @return {Object} { width, height }
+  */
+    calculateAspectRatioFit(srcWidth, srcHeight, maxWidth, maxHeight) {
+
+    var ratio = Math.min(maxWidth / srcWidth, maxHeight / srcHeight);
+
+    return { width: srcWidth*ratio, height: srcHeight*ratio };
+ }
 
     save() {
         var canvas = document.querySelector('#board');
@@ -237,7 +303,9 @@ class Board extends React.Component {
         //var img = new Image(save);
         console.log(save);
         this.setState({
-            image: save
+            image: save,
+            saved: true,
+            helpMessage: "Successfully saved!"
           }, () => {
 
               this.passbackImg(this.state.image)
@@ -246,9 +314,9 @@ class Board extends React.Component {
         
         var pic2 = new Image()
         pic2.src = save;
-        pic2.onload = function() {
-            ctx.drawImage(new Image(save), 0, 0);
-        }
+        // pic2.onload = function() {
+        //     ctx.drawImage(new Image(save), 0, 0);
+        // }
         
     }
 
@@ -258,16 +326,14 @@ class Board extends React.Component {
     }
 
 
-    load(img) {
-
-        console.log("hi " + img)
-        const pic = new Image();
-        pic.src = img;
-        var canvas = document.querySelector('#board');
-        var ctx = canvas.getContext('2d');
-        pic.onload = function() {
-            ctx.drawImage(pic, 0, 0);
-          }
+    load() {
+        // var pic = new Image();
+        // pic.src = this.props.uploadedImage
+        // var canvas = document.querySelector('#board');
+        // var ctx = canvas.getContext('2d');
+        // pic.onload = function() {
+        //     ctx.drawImage(pic, 0, 0);
+        //   }
         
     }
 
@@ -280,14 +346,19 @@ class Board extends React.Component {
 
         let stylee = {
             
-            background: 'rgba(233, 180, 100, 1)',
+            background: 'white',
             borderRadius: '10px',
             margin: '10px'
         }
         let styleFocus = {
             
-            background: '#EDC78D',
+            background: 'rgba(229, 229, 229, 1)',
             
+            borderRadius: '10px',
+            margin: '10px'
+        }
+        let styleSave = {
+            background: 'rgba(104, 228, 170, 1)',
             borderRadius: '10px',
             margin: '10px'
         }
@@ -296,9 +367,9 @@ class Board extends React.Component {
 
         return (
             <div id="sketch" className="sketch">
-                {/* <img src={this.props.passedImage} alt="" id="passedImage"></img> */}
-                <p className="helpMessage">{this.state.helpMessage}</p>
+                
                 <div className="buttonContainer">
+                    <p className="helpMessage">{this.state.helpMessage}</p>
                     <button className="drawButtons" onClick={this.setGreen} style = {this.state.isGreenOn ? styleFocus : stylee}>
                     Inflow
                     <div class = 'box green'></div>
@@ -321,7 +392,7 @@ class Board extends React.Component {
                     </button>
                     {/* onClick={() => { func1(); func2();}} */}{/*()=>this.passbackImg(this.state.image) */}
                     {/* onClick={this.save}*/}
-                    <button className="drawButtons" onClick={this.save} style = {stylee}>
+                    <button className="drawButtons" onClick={this.save} style = {this.state.saved ? styleSave : stylee}>
                     Save
                     </button>
                     {/* <button className="drawButtons" onClick={() => this.passbackImg(this.state.image)} style = {stylee}>
@@ -331,7 +402,7 @@ class Board extends React.Component {
                     Load
                     
                     </button> */}
-                    </div>
+                </div>
                 <canvas className="board" id="board"></canvas>
                 {/*this.state.save ? <h1>saved</h1> : <h1>notsaved</h1>*/}
             </div>
