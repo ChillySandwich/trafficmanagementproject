@@ -23,12 +23,12 @@ export default class GuideDownload extends Component {
 
       <Grid container spacing={3}>
 
-      <Grid item xs={6}>
+      <Grid item xs={5}>
       
       <img alt="discussGraphic" className="discussGraphic" style={{width:'380px', height:'530px'}}src={Graphic} />
       </Grid>
 
-      <Grid item xs={6}>
+      <Grid item xs={7}>
       <div>
         <pre id="guideHeader" style={{fontSize:"31px", color:"white"}}> Korero ki to Roopu    Time to talk to the Team </pre>
         
