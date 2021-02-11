@@ -32,6 +32,7 @@ export default class HazardDrop extends React.Component {
         const { values, handleChange } = this.props;
         return (
             <>
+            <br></br>
                 <div id="fragment">
 
                     {/* <Canvas /> */}

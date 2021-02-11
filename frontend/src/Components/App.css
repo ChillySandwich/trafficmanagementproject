@@ -331,6 +331,7 @@
 
   .helpMessage {
     min-height: 3em;
+    color:rgba(81, 78, 78, 1);
     background-color: white;
     border-radius: 10px;
     margin: 10px;
@@ -352,4 +353,6 @@
     background-color: white;
     border-radius: 10px;
   }
+
+
 

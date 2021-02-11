@@ -43,6 +43,7 @@ class DrawContainer extends React.Component
 
         return (
             <div className="draw-container">
+                <br></br>
                 <Board dndImg={this.props.dndImg} uploadedImage={this.props.uploadedImage} setImg = {this.props.setImg} passedImage={this.props.passedImage} colour={this.state.isToggleOn ? 'ON' : 'OFF'}></Board>
                 <input type='button' className= 'buttonStyle' value="Back" onClick={this.back}/>
                 <input type='button' className= 'buttonStyle' value="Continue" onClick={this.continuee}/>

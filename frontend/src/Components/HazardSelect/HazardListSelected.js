@@ -1,5 +1,6 @@
 import HazardSelected from "./HazardSelected";
 
+
 const HazardListSelected = ({hazards, clickHazardSelected}) => {
     return (
         <div className="hazardListSelected">

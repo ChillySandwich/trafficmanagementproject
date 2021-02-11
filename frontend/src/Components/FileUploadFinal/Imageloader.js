@@ -36,6 +36,7 @@ const Imageloader = (props) => {
     
     return (
         <div className="Imageloader">
+            <br></br>
             <div className="container">
                 <h1>Upload your Site View | Tukuatu Tirohanga Pae</h1>
                 {error && <p className="errorMsg">File not supported</p>}

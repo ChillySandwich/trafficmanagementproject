@@ -2,6 +2,7 @@ import React from 'react';
 import '../App.css'
 //import './style.css'
 import mapImage from './map.PNG'
+import key from './key.PNG'
 
 console.log("hi there");
 
@@ -296,9 +297,12 @@ class Board extends React.Component {
     save() {
         var canvas = document.querySelector('#board');
         var ctx = canvas.getContext('2d');
-        
-        
-        //const imageData = canvas.toDataURL('image/png');
+        var keyPic = new Image();
+        keyPic.src = key;
+
+        keyPic.onload = () => {
+            ctx.drawImage(keyPic, canvas.width-keyPic.width, 0);
+            //const imageData = canvas.toDataURL('image/png');
         var save = canvas.toDataURL('image/png');
         //var img = new Image(save);
         console.log(save);
@@ -314,6 +318,11 @@ class Board extends React.Component {
         
         var pic2 = new Image()
         pic2.src = save;
+        
+        }
+        
+        
+        
         // pic2.onload = function() {
         //     ctx.drawImage(new Image(save), 0, 0);
         // }

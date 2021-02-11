@@ -20,7 +20,8 @@ export default class GuideDownload extends Component {
   render() {
     const { values, handleChange } = this.props;
     return (
-
+      <>
+      <br></br>
       <Grid container spacing={3}>
 
       <Grid item xs={5}>
@@ -49,7 +50,7 @@ export default class GuideDownload extends Component {
       
 </div>   */}
       </Grid>
-
+      </>
     );
   }
 }

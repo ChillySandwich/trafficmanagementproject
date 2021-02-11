@@ -14,6 +14,9 @@ function HazardPage(props) {
             description: "...",
             selected: false,
             img: "./Forklift.png",
+            info: "Potential risk: High\n\n-Isolate\n-Minimise\n\nPossible Controls:\nSigns, PPE, Licensed Drivers",
+            risk: "High",
+            controls: "Signs, PPE, Licensed Drivers"
         },
         {
             id: 2,
@@ -21,6 +24,10 @@ function HazardPage(props) {
             description: "...",
             selected: false,
             img: "./Barrel.png",
+            risk: "",
+            controls: "",
+            info: "Potential risk: High\n\n-Isolate\n-Minimise\n\nPossible Controls:\nSigns, PPE, Licensed Drivers",
+
         },
         {
             id: 3,
@@ -28,6 +35,10 @@ function HazardPage(props) {
             description: "...",
             selected: false,
             img: "./Truck.png",
+            risk: "",
+            controls: "",
+            info: "Potential risk: High\n\n-Isolate\n-Minimise\n\nPossible Controls:\nSigns, PPE, Licensed Drivers",
+
         },
         {
             id: 4,
@@ -35,6 +46,10 @@ function HazardPage(props) {
             description: "...",
             selected: false,
             img: "./Machinery.png",
+            risk: "",
+            controls: "",
+            info: "Potential risk: High\n\n-Isolate\n-Minimise\n\nPossible Controls:\nSigns, PPE, Licensed Drivers",
+
         },
         {
             id: 5,
@@ -42,6 +57,10 @@ function HazardPage(props) {
             description: "...",
             selected: false,
             img: "./Person.png",
+            risk: "",
+            controls: "",
+            info: "Potential risk: High\n\n-Isolate\n-Minimise\n\nPossible Controls:\nSigns, PPE, Licensed Drivers",
+
         }
         //,
         // {
@@ -93,7 +112,7 @@ function HazardPage(props) {
 
   return (
     <div>
-        
+        <br></br>
       <div className="hazard-page-container">
           
           {/* <div>

@@ -13,6 +13,7 @@ const pdf = (props) => {
     }
 
     var jsPdfGenerator = () => {
+        try {
         var doc = new jsPDF ('p', 'pt');
 
         doc.text(20, 20, "Email: " + props.email);
@@ -26,11 +27,14 @@ const pdf = (props) => {
         img2.src = props.dndImg;
         doc.addImage(img2, 'png', 20, 500, 450, 300)
         doc.save("traffic-management-plan.pdf");
-       
+        } catch {
+            console.log("no images uploaded")
+        }
     }
 
     return (
         <>
+            <br></br>
             <div style={{ textAlign: 'left' }} className="MultiStepHandler" ref={ref}>
                 <h1 >A review of your Traffic Management Plan</h1>
                 <br></br>
@@ -40,12 +44,13 @@ const pdf = (props) => {
                 <h2> Site Size(Sqm): {props.sqmSite}</h2>
                 <h2> Warehouse: {props.warehouse}</h2>
                 <h2> Site Image: </h2>
-                <img src={props.uploadedImage} width="60%" height = "500px"/>
-                <img src = {props.dndImg}></img>
+                <img alt="" src={props.uploadedImage} width="60%" height = "500px"/>
+                <img alt="" src = {props.dndImg}></img>
             </div>
 
             <input type='button' className='buttonStyle' value="Back" onClick={back} />
-            <button className='buttonStyle' onClick={jsPdfGenerator}> Generate PDF </button>
+            <input type='button' className='buttonStyle' value="Generate PDF" onClick={jsPdfGenerator} />
+            {/* <button className='buttonStyle generateBtn' onClick={jsPdfGenerator}> Generate PDF </button> */}
         </>
     );
 }
