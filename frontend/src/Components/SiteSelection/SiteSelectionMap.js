@@ -17,7 +17,7 @@ let markerArray = [];
         <button className="helpButtons" value="For Mac" onClick={() => setButtonTextWindows("Windows Key + Prt Sc")}>{buttonTextWindows}</button>
         </Grid>
                         <Grid item xs={6}>
-                        <button className="helpButtons" color="white" value="For Mac" onClick={() => setButtonTextMac("Shift + Command + 3")}>{buttonTextMac}</button>
+                        <button className="helpButtons" color="white" value="For Mac" onClick={() => setButtonTextMac("Shift + Command + 5")}>{buttonTextMac}</button>
         </Grid>
               </Grid>       
         <iframe style={{padding: "15px", backgroundColor: "white", borderRadius: "10px", border: "none"}} src="https://snazzymaps.com/embed/289197" title = "map" width="90%" height="600px" allow="fullscreen"></iframe> 
