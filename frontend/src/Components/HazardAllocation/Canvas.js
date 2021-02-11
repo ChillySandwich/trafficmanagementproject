@@ -54,7 +54,6 @@ class URLImage extends React.Component {
   }
 }
 
-
 const STANDARD_FORKLIFT_DRAG = (
   e, idx, ImagePosition, setImagePosition,
   userHazards, setUserHazards, draggableRef) => {
@@ -409,9 +408,10 @@ const STANDARD_CHEMICALBARREL_DRAG = (
 
 //creating a functional component here of the Draggable Rectangle
 
+
 const DraggableReferenceForklift = (props) => {
 
-  const [img] = useImage('https://www.tinyurl.com/9kv7w4bn');
+  const [img] = useImage('https://static.thenounproject.com/png/1654948-200.png', 'Anonymous');
 
   const [imagePosition, setImagePosition] = useState(props.initialPosition);
   const draggableRef = useRef(null);
@@ -463,7 +463,7 @@ const DraggableReferenceForklift = (props) => {
 
 const DraggableReferenceTruck = (props) => {
 
-  const [img] = useImage('https://www.tinyurl.com/xldyo2za ');
+  const [img] = useImage('https://img.icons8.com/android/452/truck.png', 'Anonymous');
 
   const [imagePosition, setImagePosition] = useState(props.initialPosition);
   const draggableRef = useRef(null);
@@ -516,7 +516,7 @@ const DraggableReferenceTruck = (props) => {
 const DraggableReferenceCone = (props) => {
 
 
-  const [img] = useImage('https://www.tinyurl.com/57vtztcm');
+  const [img] = useImage('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4kdUik0koRv9ycRFf539VK5lW0q9TEj91OQ&usqp=CAU', 'Anonymous');
 
   const [imagePosition, setImagePosition] = useState(props.initialPosition);
   const draggableRef = useRef(null);
@@ -569,7 +569,7 @@ const DraggableReferenceCone = (props) => {
 const DraggableReferenceRobotArm = (props) => {
 
 
-  const [img] = useImage('https://www.tinyurl.com/3bw6m6ow');
+  const [img] = useImage('https://static.thenounproject.com/png/175817-200.png', 'Anonymous');
 
   const [imagePosition, setImagePosition] = useState(props.initialPosition);
   const draggableRef = useRef(null);
@@ -620,7 +620,7 @@ const DraggableReferenceRobotArm = (props) => {
 
 const DraggableReferenceChemicalBarrel = (props) => {
 
-  const [img] = useImage('https://www.tinyurl.com/1kcyzbvw ');
+  const [img] = useImage('https://static.thenounproject.com/png/3317201-200.png', 'Anonymous');
 
   const [imagePosition, setImagePosition] = useState(props.initialPosition);
   const draggableRef = useRef(null);
@@ -639,6 +639,7 @@ const DraggableReferenceChemicalBarrel = (props) => {
   return (
     <>
       <Image
+        
         onClick={props.onSelect}
         onTap={props.onSelect}
         ref={draggableRef}
@@ -647,7 +648,7 @@ const DraggableReferenceChemicalBarrel = (props) => {
         ref={draggableRef}
         x={imagePosition.x}
         y={imagePosition.y}
-        width={25}
+        width={40}
         height={40}
         draggable
         onDragEnd={(e) => { props.onDragEnd(e, props.idx, imagePosition, setImagePosition, props.userHazards, props.setUserHazards, draggableRef) }}
@@ -792,29 +793,44 @@ const ToolBar = (props) => {
         key={`TOOLBAR_CHEMICALBARREL`}
         x={18}
         y={window.innerHeight / 2 + 30}
-        width={25}
+        width={40}
         height={40}
         setUserHazards={props.setUserHazards}
         userHazards={props.userHazards}
         onDragEnd={TOOLBAR_CHEMICALBARREL_DRAG}
-        initialPosition={{ x: 762, y: 315}}
+        initialPosition={{ x: 755, y: 315}}
       />
 
     </Layer>
   )
 }
 
-const Canvas = () => {
+const Canvas = (props) => {
 
   const [userHazards, setUserHazards] = useState({
     rectangles: [], ellipses: [], cones: [], robotarms: [], chemicalBarrels: [], trucks: [],
     forklifts: [],
   });
-  const [selectedId, selectShape] = useState(null);
-  const [cross] = useImage("https://i.dlpng.com/static/png/6502802_preview.png");
-  const [crossPosition, setCrossPosition] = useState()
 
-  const siteRef = useRef();
+  const stageRef = useRef(null);
+
+
+  const handleExport = () => {
+    const uri = stageRef.current.toDataURL();
+    console.log(uri);
+    props.setdndImg(uri);
+    // we also can save uri as file
+    // but in the demo on Konva website it will not work
+    // because of iframe restrictions
+    // but feel free to use it in your apps:
+    // 
+  };
+
+
+  const [selectedId, selectShape] = useState(null);
+  // const [cross] = useImage("https://i.dlpng.com/static/png/6502802_preview.png");
+  // const [crossPosition, setCrossPosition] = useState()
+
 
   const checkDeselect = (e) => {
     // deselect when clicked on empty area
@@ -838,6 +854,7 @@ const Canvas = () => {
       height={600}
       onMouseDown={checkDeselect}
       onTouchStart={checkDeselect}
+      ref={stageRef}
     >
     <Layer>
         <URLImage 
@@ -848,6 +865,29 @@ const Canvas = () => {
           onClick={(e) => {selectShape(null);}}
           // image={this.props.uploadedImage}
         />
+
+      </Layer>
+
+      <Layer>
+      <Rect
+          x={710}
+          y={430}
+          width={135}
+          height={51}
+          onClick={handleExport}
+          cornerRadius={[10, 10, 10, 10]}
+          fill={"#f0b15d"}
+        />
+      <Text
+          text={"Save Map"}
+          x={716}
+          y={442}
+          fontSize={26}
+          onClick={handleExport}
+          fill={"#4d4b49"}
+          fontStyle={"bold"}
+      />
+
       </Layer>
 
       <Layer>
