@@ -38,6 +38,7 @@ export class SiteSelectionForm extends Component {
       const { values, handleChange } = this.props;
         return (
             <form>
+              <br></br>
             <h1 >Fill Out Your Site Details Here</h1>
             <div className="form-group">
                 <input type="text" className="form-control" placeholder="Enter Industry" onChange={handleChange('industry')} defaultValue={values.industry} />
@@ -52,9 +53,6 @@ export class SiteSelectionForm extends Component {
                 <input type="text" className="form-control" placeholder="Enter Sqm" onChange={handleChange('sqmSite')} defaultValue={values.sqmSite} />
             </div>
  
-            <div className="form-group">
-                <input type="text" className="form-control" placeholder="Enter Warehouse" onChange={handleChange('warehouse')} defaultValue={values.warehouse} />
-            </div>
             <input type='button'className= 'buttonStyle'  value="Back" onClick={this.back} />
               <input type='button'className= 'buttonStyle' value="Continue" onClick={this.continue} />
             </form>

@@ -11,6 +11,11 @@
     font-family: 'Roboto', sans-serif;
 
   }
+  .helpButtons {
+    color: black;
+    background-color: white;
+    color-adjust: white;
+  }
 
   .main {
     background:  rgba(113, 185, 227, 1);  
